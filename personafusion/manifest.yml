@@ -1,0 +1,8 @@
+applications:
+- disk_quota: 1024M
+  host: personafusion
+  name: personafusion
+  path: webStarterApp.war
+  domain: stage1.mybluemix.net
+  instances: 1
+  memory: 512M
