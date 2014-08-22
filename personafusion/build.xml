@@ -11,6 +11,14 @@
     <path id="classpathDir">
         <pathelement location="bin"/>
         <pathelement location="dep-jar/com.ibm.ws.javaee.jaxrs.1.1_1.0.1.jar"/>
+    	<pathelement location="dep-jar/JSON4J.jar"/>
+    	<pathelement location="dep-jar/httpclient-4.3.4.jar"/>
+    	<pathelement location="dep-jar/httpcore-4.3.2.jar"/>
+    	<pathelement location="dep-jar/httpclient-cache-4.3.4.jar"/>
+    	<pathelement location="dep-jar/httpmime-4.3.4.jar"/>
+    	<pathelement location="dep-jar/commons-codec-1.6.jar"/>
+    	<pathelement location="dep-jar/commons-io-2.4.jar"/>
+    	<pathelement location="dep-jar/fluent-hc-4.3.4.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -42,6 +50,7 @@
 	  		<include name="**/*"/>
 	    </fileset>
 	  	<lib dir="WebContent/WEB-INF/lib"/>
+	  	<lib dir="dep-jar"/>
 	  	<classes dir="bin"/>
 	  </war>
    </target>
