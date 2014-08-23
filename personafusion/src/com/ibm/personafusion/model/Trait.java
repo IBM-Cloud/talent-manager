@@ -6,8 +6,8 @@ package com.ibm.personafusion.model;
 
 public class Trait 
 {
-	String traitName;
-	double percent;
+	public String traitName;
+	public double percent;
 	
 	public Trait(String traitName, double percent)
 	{

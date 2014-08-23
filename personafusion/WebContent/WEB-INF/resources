@@ -1,3 +1,1 @@
-com.ibm.cloudoe.samples.HelloResource
-com.ibm.cloudoe.samples.ModelingResource
-com.ibm.cloudoe.samples.ResonanceResource
+com.ibm.personafusion.controller.ModelingResource

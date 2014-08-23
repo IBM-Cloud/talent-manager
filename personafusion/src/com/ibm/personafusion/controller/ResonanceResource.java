@@ -1,4 +1,4 @@
-package com.ibm.personafusion.resource;
+package com.ibm.personafusion.controller;
 
 import java.net.URI;
 
