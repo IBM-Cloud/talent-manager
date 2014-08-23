@@ -13,13 +13,19 @@ public class Engine
 	
 	Engine(List<Person> people)
 	{
-		this.people = people;
+		//this.people = people;
+		
+		this.people = new ArrayList<Person>();
+		for(Person p : people)
+		{
+			this.people.add(new Person(p.name, p.traits, p.resumeInfo, p.role));
+		}
 	}
 	
 	List<Person> query(Person p)
 	{
 		this.setQueryPerson(p);
-		this.setDistanceWeights(.5, 0, .5);
+		this.setDistanceWeights(.5, 0 , 5);
 		Collections.sort(this.people);
 		this.people.remove(0);
 		this.convertScores(this.people);
