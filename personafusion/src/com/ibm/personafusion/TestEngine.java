@@ -24,7 +24,7 @@ public class TestEngine
 		{
 			String name = alphName.charAt(i) + "";
 			List<Trait> traits = new ArrayList<Trait>();
-			people.add(new Person(name, genTraits(traits), new ResumeInfo()));
+			people.add(new Person(name, genTraits(traits), new ResumeInfo(), Person.Role.DEV));
 		}
 		System.out.println(people.toString());
 		
@@ -32,6 +32,9 @@ public class TestEngine
 		//Engine Example
 		Engine engine = new Engine(people);
 		List<Person> peopleResults = engine.query(people.get(0));
+		System.out.println(peopleResults.toString());
+		
+		List<Person> peopleResultsName = engine.query("c");
 		System.out.println(peopleResults.toString());
 	}
 	

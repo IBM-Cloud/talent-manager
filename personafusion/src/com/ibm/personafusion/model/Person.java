@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Person implements Comparable<Person>
 {
-	String name;
+	public String name;
 	List<Trait> traits;
-	enum Role {DEV, Manager};
+	public enum Role {DEV, Manager};
 	Role role;
 	ResumeInfo resumeInfo;
 	

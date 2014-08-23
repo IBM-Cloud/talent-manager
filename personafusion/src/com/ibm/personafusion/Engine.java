@@ -1,5 +1,6 @@
 package com.ibm.personafusion;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,6 +23,25 @@ public class Engine
 		this.people.remove(0);
 		this.convertScores(this.people);
 		return this.people;
+	}
+	
+	List<Person> query(String personName)
+	{
+		//get person with the person name
+		this.setQueryPerson(this.getPersonGivenName(personName));
+		this.setDistanceWeights(.5, .25 , .25);
+		Collections.sort(this.people);
+		this.people.remove(0);
+		this.convertScores(this.people);
+		return this.people;
+	}
+	
+	Person getPersonGivenName(String personName)
+	{
+		for(Person p : this.people)
+			if(p.name.equals(personName))
+				return p;
+		return null;
 	}
 	
 	void convertScores(List<Person> people)
