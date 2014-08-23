@@ -17,7 +17,7 @@ public class Person implements Comparable<Person>
 	//one set of weights for everyone
 	static double weightTraits, weightResume, weightRole;
 	
-	Person(String name, List<Trait> traits, ResumeInfo resumeInfo, Role role)
+	public Person(String name, List<Trait> traits, ResumeInfo resumeInfo, Role role)
 	{
 		this.name = name;
 		this.traits = traits;
@@ -29,6 +29,19 @@ public class Person implements Comparable<Person>
 		this.weightRole = 1;
 	}
 	
+	public Person(String name, List<Trait> traits, ResumeInfo resumeInfo)
+	{
+		this.name = name;
+		this.traits = traits;
+		this.resumeInfo = resumeInfo;
+		this.role = role;
+		//Set default weights
+		this.weightTraits = 1;
+		this.weightResume = 1;
+		this.weightRole = 1;
+		this.role = Role.DEV;
+	}
+	
 	public void setQueryPerson(Person p)
 	{
 		this.queryPerson = p;
@@ -37,7 +50,8 @@ public class Person implements Comparable<Person>
 	public String toString()
 	{
 		String pString = "";
-		pString = traits.toString();
+		//pString = traits.toString();
+		pString = this.name + " , " + this.distToQueryPerson;
 		return pString;
 	}
 	
@@ -82,6 +96,7 @@ public class Person implements Comparable<Person>
 			distanceRole = 1;
 		
 		distance = (weightTraits * distanceTraits) + (weightResume * distanceResume) + (weightRole * distanceRole);
+		this.distToQueryPerson = distance;
 		return distance;
 	}
 	
@@ -106,9 +121,9 @@ public class Person implements Comparable<Person>
 		//weight different distances between resume skills, traits, and role
 		double thisDistance = this.getDistanceToQueryPerson();
 		double otherDistance = other.getDistanceToQueryPerson();
-		if(thisDistance > otherDistance)
-			return -1;
 		if(thisDistance < otherDistance)
+			return -1;
+		if(thisDistance > otherDistance)
 			return 1;
 		else
 			return 0;

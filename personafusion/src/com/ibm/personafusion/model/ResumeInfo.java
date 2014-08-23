@@ -1,5 +1,6 @@
 package com.ibm.personafusion.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -11,7 +12,13 @@ public class ResumeInfo
 	List<String> techSkills;
 	List<String> pastEmployers;
 	
-	ResumeInfo(List<String> techSkills, List<String> pastEmployers)
+	public ResumeInfo()
+	{
+		this.techSkills = new ArrayList<String>();
+		this.pastEmployers = new ArrayList<String>();
+	}
+	
+	public ResumeInfo(List<String> techSkills, List<String> pastEmployers)
 	{
 		this.techSkills = techSkills;
 		this.pastEmployers = pastEmployers;

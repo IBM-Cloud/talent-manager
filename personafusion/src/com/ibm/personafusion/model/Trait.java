@@ -9,7 +9,7 @@ public class Trait
 	String traitName;
 	double percent;
 	
-	Trait(String traitName, double percent)
+	public Trait(String traitName, double percent)
 	{
 		this.traitName = traitName;
 		this.percent = percent;
