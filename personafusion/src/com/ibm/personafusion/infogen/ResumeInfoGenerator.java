@@ -1,7 +1,9 @@
 package com.ibm.personafusion.infogen;
 
-import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -21,16 +23,16 @@ public class ResumeInfoGenerator {
 	final static int maxPrev = 4;
 	
 	// Dev skills populated for sake of common skills vs. rare skills
-	final static String DevSkillURL = "person_source/resumeinfo/dev_skill.txt";
+//	final static String DevSkillURL = "person_source/resumeinfo/dev_skill.txt";
 	final static int DevSkillLength = 160;
 	
-	final static String DevPrevURL = "person_source/resumeinfo/dev_prev.txt";
+//	final static String DevPrevURL = "person_source/resumeinfo/dev_prev.txt";
 	final static int DevPrevLength = 32;
 	
-	final static String ManSkillURL = "person_source/resumeinfo/manager_skill.txt";
+//	final static String ManSkillURL = "person_source/resumeinfo/manager_skill.txt";
 	final static int ManSkillLength = 74;
 	
-	final static String ManPrevURL = "person_source/resumeinfo/manager_prev.txt";
+//	final static String ManPrevURL = "person_source/resumeinfo/manager_prev.txt";
 	final static int ManPrevLength = 43;
 	
 	public static void main(String[] args) {
@@ -85,12 +87,11 @@ public class ResumeInfoGenerator {
 			while(skillList.size() < skillNum) {
 				int skillInd = rand.nextInt(DevSkillLength - 1) + 1;
 				
-				File file = new File(DevSkillURL);
-				
 				String skill = "";
 				Scanner scanner;
 				try {
-					scanner = new Scanner(file);
+					URL url = new URL("https://dl.dropboxusercontent.com/u/27101002/personafusion/dev_skill.txt");	
+					scanner = new Scanner(url.openStream());
 				
 					int counter = 0;
 					while(scanner.hasNextLine()) {
@@ -105,6 +106,10 @@ public class ResumeInfoGenerator {
 					
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
 
 				if(!skillList.contains(skill)) skillList.add(skill);
@@ -118,12 +123,12 @@ public class ResumeInfoGenerator {
 		else if(ManagerRole.equals(role)) {
 			while(skillList.size() < skillNum) {
 				int skillInd = rand.nextInt(ManSkillLength - 1) + 1;
-				File file = new File(ManSkillURL);
-				
+								
 				String skill = "";
 				Scanner scanner;
 				try {
-					scanner = new Scanner(file);
+					URL url = new URL("https://dl.dropboxusercontent.com/u/27101002/personafusion/man_skill.txt");
+					scanner = new Scanner(url.openStream());
 					
 					int counter = 0;
 					while(scanner.hasNextLine()) {
@@ -137,6 +142,10 @@ public class ResumeInfoGenerator {
 					}
 					
 				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 
@@ -169,13 +178,12 @@ public class ResumeInfoGenerator {
 		if(DevRole.equals(role)) {
 			while(prevList.size() < prevNum) {
 				int prevInd = rand.nextInt(DevPrevLength - 1) + 1;
-				
-				File file = new File(DevPrevURL);
-				
+								
 				String prev = "";
 				Scanner scanner;
 				try {
-					scanner = new Scanner(file);
+					URL url = new URL("https://dl.dropboxusercontent.com/u/27101002/personafusion/dev_prev.txt");
+					scanner = new Scanner(url.openStream());
 					
 					int counter = 0;
 					while(scanner.hasNextLine()) {
@@ -190,6 +198,10 @@ public class ResumeInfoGenerator {
 
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
 
 				if(!prevList.contains(prev)) prevList.add(prev);
@@ -203,12 +215,12 @@ public class ResumeInfoGenerator {
 		else if(ManagerRole.equals(role)) {
 			while(prevList.size() < prevNum) {
 				int prevInd = rand.nextInt(ManPrevLength - 1) + 1;
-				File file = new File(ManPrevURL);
-				
+
 				String prev = "";
 				Scanner scanner;
 				try {
-					scanner = new Scanner(file);
+					URL url = new URL("https://dl.dropboxusercontent.com/u/27101002/personafusion/man_prev.txt");
+					scanner = new Scanner(url.openStream());
 					
 					int counter = 0;
 					while(scanner.hasNextLine()) {
@@ -222,6 +234,10 @@ public class ResumeInfoGenerator {
 					}
 					
 				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				
