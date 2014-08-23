@@ -19,25 +19,23 @@ import org.apache.http.entity.ContentType;
 import com.ibm.json.java.JSONArray;
 import com.ibm.json.java.JSONObject;
 
-@Path("/modeling")
-public class ModelingResource {
+@Path("/resonance")
+public class ResonanceResource {
 
 	@GET
 	public String getInformation() {
 		try
 		{
-			String text = "This is a test of the service.";
-			String username = "0cebddee-31b3-49a4-bf18-20e792fb6dea";	// YOUR USERNAME HERE
-			String password = "Mwn6NRgSReqI";							// YOUR PASSWORD HERE
-			String baseUrl = "https://service-s.platform.watson.ibm.com/systemu/service/";
+			String word = "hello";
+			String username = "03d2c98c-2e39-4638-904e-70836236164c";	// YOUR USERNAME HERE
+			String password = "HZjf3lcza3Di";							// YOUR PASSWORD HERE
+			String baseUrl = "https://service-s.platform.watson.ibm.com/messageresonance/service/api/v1/ringscore";
 			
 			JSONObject contentItem = new JSONObject();
 	    	contentItem.put("userid", UUID.randomUUID().toString());
 	    	contentItem.put("id", UUID.randomUUID().toString());
-	    	contentItem.put("sourceid", "freetext");
-	    	contentItem.put("contenttype", "text/plain");
-	    	contentItem.put("language", "en");
-	    	contentItem.put("content", text);
+	    	contentItem.put("dataset", "1");
+	    	contentItem.put("text", word);
 	    	
 	    	JSONObject content = new JSONObject();
 	    	JSONArray contentItems = new JSONArray();
@@ -57,21 +55,14 @@ public class ModelingResource {
     		// the baseUrl and leading slashes on the api/v2 path creating
     		// double slashes in the url.  normalize takes care of that.
     		
-			URI profileUrl = new URI(baseUrl + "/api/v2/profile").normalize();
-    		URI visualizeUrl = new URI(baseUrl + "/api/v2/visualize").normalize();
+			URI resonanceUrl = new URI(baseUrl).normalize();
     		
-    		String profileJson = executor.execute(Request.Post(profileUrl)
+    		String resJson = executor.execute(Request.Post(resonanceUrl)
     			    .setHeader("Accept", "application/json")
     			    .bodyString(content.toString(), ContentType.APPLICATION_JSON)
     			    ).returnContent().asString();
 			
-			byte[] vizHtmlData = executor.execute(Request.Post(visualizeUrl)
-				.setHeader("Accept", "text/html")
-			    .bodyString(profileJson, ContentType.APPLICATION_JSON)
-			    ).returnContent().asBytes();
-			String vizHtml = new String(vizHtmlData, "utf-8");
-			
-    		return vizHtml;
+    		return resJson;
 		} catch (Exception e)
 		{
 			e.printStackTrace();
