@@ -11,7 +11,7 @@ public class Engine
 {
 	List<Person> people;
 	
-	Engine(List<Person> people)
+	public Engine(List<Person> people)
 	{
 		//this.people = people;
 		

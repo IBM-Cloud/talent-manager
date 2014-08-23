@@ -59,8 +59,8 @@ public class Person implements Comparable<Person>
 	public String toString()
 	{
 		String pString = "";
-		//pString = traits.toString();
-		pString = this.name + " , " + this.distToQueryPerson;
+		pString = traits.toString();
+		//pString = this.name + " , " + this.distToQueryPerson;
 		return pString;
 	}
 	
