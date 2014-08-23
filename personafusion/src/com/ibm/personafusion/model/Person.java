@@ -13,7 +13,7 @@ public class Person implements Comparable<Person>
 	//one queryPerson for everyone
 	static Person queryPerson;
 	//different distances for everyone
-	double distToQueryPerson;
+	public double distToQueryPerson;
 	//one set of weights for everyone
 	static double weightTraits, weightResume, weightRole;
 	

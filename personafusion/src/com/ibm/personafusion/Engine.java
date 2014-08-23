@@ -19,6 +19,7 @@ public class Engine
 		this.setQueryPerson(p);
 		this.setDistanceWeights(.5, .25 , .25);
 		Collections.sort(this.people);
+		this.people.remove(0);
 		return this.people;
 	}
 	
