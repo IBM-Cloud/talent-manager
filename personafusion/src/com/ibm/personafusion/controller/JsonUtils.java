@@ -7,14 +7,14 @@ import com.google.gson.Gson;
 
 public class JsonUtils 
 {
-	String getJson(Person p)
+	public String getJson(Person p)
 	{
 		Gson gson = new Gson();
 		String json = gson.toJson(p);
 		return json;
 	}
 	
-	String getListPersonJson(List<Person> people)
+	public String getListPersonJson(List<Person> people)
 	{
 		String jsonList = "";
 		for(Person p : people)

@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.management.relation.Role;
 
+import com.ibm.personafusion.controller.JsonUtils;
+import com.ibm.personafusion.infogen.PersonListGenerator;
 import com.ibm.personafusion.model.Person;
 import com.ibm.personafusion.model.ResumeInfo;
 import com.ibm.personafusion.model.Trait;
@@ -26,12 +28,20 @@ public class TestEngine
 			List<Trait> traits = new ArrayList<Trait>();
 			people.add(new Person(name, genTraits(traits), new ResumeInfo(), Person.Role.DEV));
 		}
-		System.out.println(people.toString());
+		//System.out.println(people.toString());
 		
 		
 		//Engine Example
 		
 		//FIX CLONING SO YOU DONT KEEP DELETING THE QUERY AT POSITION 0
+		List<Person> genPeople = PersonListGenerator.generateDistinctPeople(10);
+		JsonUtils jsonUtils = new JsonUtils();
+		String pJson = jsonUtils.getJson(genPeople.get(0));
+		System.out.println(pJson);
+		Engine engineGen = new Engine(genPeople);
+		List<Person> peopleResultsGen = engineGen.query(genPeople.get(0));
+		System.out.println(peopleResultsGen.toString());
+		
 		Engine engine = new Engine(people);
 		List<Person> peopleResults = engine.query(people.get(0));
 		System.out.println(peopleResults.toString());
