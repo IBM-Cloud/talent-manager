@@ -28,25 +28,11 @@ public class TestEngine
 		}
 		System.out.println(people.toString());
 		
+		
+		//Engine Example
 		Engine engine = new Engine(people);
 		List<Person> peopleResults = engine.query(people.get(0));
-		this.convertScores(peopleResults);
 		System.out.println(peopleResults.toString());
-	}
-	
-	void convertScores(List<Person> people)
-	{
-		double minDist = Double.MAX_VALUE;
-		for(Person p : people)
-		{
-			if(minDist > p.distToQueryPerson)
-				minDist = p.distToQueryPerson;
-		}
-		
-		for(Person p : people)
-		{
-			p.distToQueryPerson = minDist / (p.distToQueryPerson);
-		}
 	}
 	
 	List<Trait> genTraits(List<Trait> traits)
