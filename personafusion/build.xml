@@ -48,11 +48,17 @@
 	  	<webinf dir="WebContent/WEB-INF">
 	  		<include name="resources"/>
 	    </webinf>
+	  	<fileset dir="person_source">
+	  		<include name="**/*"/>
+	  	</fileset>
+	  	<include name="dev_tweets.txt"/>
+	  	<include name="mgr_tweets.txt"/>
 	  	<fileset dir="WebContent">
 	  		<include name="**/*"/>
 	    </fileset>
 	  	<lib dir="WebContent/WEB-INF/lib"/>
 	  	<lib dir="dep-jar"/>
+	  	<lib dir="person_source"/>
 	  	<classes dir="bin"/>
 	  </war>
    </target>

@@ -32,7 +32,7 @@ public class Engine
 		return this.people;
 	}
 	
-	List<Person> query(String personName)
+	public List<Person> query(String personName)
 	{
 		//get person with the person name
 		this.setQueryPerson(this.getPersonGivenName(personName));

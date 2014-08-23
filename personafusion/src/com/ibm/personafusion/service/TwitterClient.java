@@ -1,11 +1,8 @@
 package com.ibm.personafusion.service;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -102,13 +99,12 @@ public class TwitterClient
 	
 	private void downloadData() throws IOException, TwitterException
 	{
-		//this.downloadTweetsFromUsers("dev_usernames.txt", "dev_tweets.txt", 10000);
+		this.downloadTweetsFromUsers("dev_usernames.txt", "dev_tweets.txt", 10000);
 		this.downloadTweetsFromUsers("mgr_usernames.txt", "mgr_tweets.txt", 10000);
 	}
 	
 	public static void main(String[] args) throws TwitterException, IOException
 	{
 		TwitterClient tc = new TwitterClient();
-		tc.downloadData();
 	}
 }

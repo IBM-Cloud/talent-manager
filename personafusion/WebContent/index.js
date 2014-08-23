@@ -1,7 +1,7 @@
 // index.js
 
 // request message on server
-xhrGet("api/modeling", function(responseText){
+xhrGet("api/search?fname=Alan&lname=Xia", function(responseText){
 	// add to document
 	var mytitle = document.getElementById('message');
 	mytitle.innerHTML = responseText;
