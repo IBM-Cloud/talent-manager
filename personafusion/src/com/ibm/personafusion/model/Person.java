@@ -1,6 +1,12 @@
 package com.ibm.personafusion.model;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
 
 public class Person implements Comparable<Person>
 {
@@ -9,6 +15,7 @@ public class Person implements Comparable<Person>
 	public enum Role {DEV, Manager};
 	public Role role;
 	public ResumeInfo resumeInfo;
+	public List<String> tweets;
 	
 	//one queryPerson for everyone
 	static Person queryPerson;
@@ -27,6 +34,7 @@ public class Person implements Comparable<Person>
 		this.weightTraits = 1;
 		this.weightResume = 1;
 		this.weightRole = 1;
+		this.tweets = new ArrayList<String>();
 	}
 	
 	public Person(String name, List<Trait> traits, ResumeInfo resumeInfo)
@@ -40,6 +48,7 @@ public class Person implements Comparable<Person>
 		this.weightResume = 1;
 		this.weightRole = 1;
 		this.role = Role.DEV;
+		this.tweets = new ArrayList<String>();
 	}
 	
 	public void setQueryPerson(Person p)
@@ -60,6 +69,76 @@ public class Person implements Comparable<Person>
 		this.weightTraits = weightTraits;
 		this.weightResume = weightResume;
 		this.weightRole = weightRole;
+	}
+	
+	/*
+	 * Remove stop words and return N most frequent words
+	 */
+	public List<String> getKeyWords(int nMostFrequent)
+	{
+		List<String> stopWords = new ArrayList<String>();
+		try
+		{
+			Scanner sc = new Scanner(new File("person_source/stopWords.txt"));
+			String word = sc.nextLine();
+			word = word.trim();
+			stopWords.add(word);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		List<String> keyWords = new ArrayList<String>();
+		Map<String, Integer> keyMapCount = new TreeMap<String, Integer>();
+		for(String tweet : this.tweets)
+		{
+			String[] tweetParts = tweet.split(" ");
+			for(String tweetWord : tweetParts)
+			{
+				if(keyMapCount.containsKey(tweetWord))
+				{
+					int value = keyMapCount.get(tweetWord);
+					keyMapCount.put(tweetWord, value+1);
+				}
+				else
+				{
+					keyMapCount.put(tweetWord, 1);
+				}
+			}
+		}
+		
+		List<TweetTerm> termList = new ArrayList<TweetTerm>();
+		for(String  tweetWord : keyMapCount.keySet())
+		{
+			tweetWord = tweetWord.toLowerCase();
+			if(!stopWords.contains(tweetWord))
+				termList.add(new TweetTerm(tweetWord, keyMapCount.get(tweetWord)));
+		}
+		Collections.sort(termList);
+		for(int i=0; i<nMostFrequent; i++)
+		{
+			keyWords.add(termList.get(i).word);
+		}
+		return keyWords;
+	}
+	
+	class TweetTerm implements Comparable<TweetTerm>
+	{
+		String word;
+		int wordCount;
+		
+		TweetTerm(String word, int wordCount)
+		{
+			this.word = word;
+			this.wordCount = wordCount;
+		}
+		
+		public int compareTo(TweetTerm other) 
+		{
+			return other.wordCount - this.wordCount;
+		}
+		
 	}
 	
 	double getDistanceToQueryPerson()
