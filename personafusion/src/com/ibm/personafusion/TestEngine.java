@@ -36,19 +36,25 @@ public class TestEngine
 		//FIX CLONING SO YOU DONT KEEP DELETING THE QUERY AT POSITION 0
 		List<Person> genPeople = PersonListGenerator.generateDistinctPeople(10);
 		JsonUtils jsonUtils = new JsonUtils();
-		String pJson = jsonUtils.getJson(genPeople.get(0));
-		System.out.println(pJson);
 		Engine engineGen = new Engine(genPeople);
 		List<Person> peopleResultsGen = engineGen.query(genPeople.get(0));
-		System.out.println(peopleResultsGen.toString());
+		String pJsonQuery = jsonUtils.getJson(genPeople.get(0));
+		System.out.println(pJsonQuery);
+		System.out.println(peopleResultsGen.get(1).name);
+		System.out.println(peopleResultsGen.get(1).distToQueryPerson);
+		String pJson = jsonUtils.getJson(peopleResultsGen.get(1));
+		System.out.println(pJson);
 		
+		/*
 		Engine engine = new Engine(people);
 		List<Person> peopleResults = engine.query(people.get(0));
+		System.out.println(peopleResults.get(2).distToQueryPerson);
 		System.out.println(peopleResults.toString());
 		
 		Engine engine2 = new Engine(people);
 		List<Person> peopleResultsName = engine2.query("c");
 		System.out.println(peopleResultsName.toString());
+		*/
 	}
 	
 	List<Trait> genTraits(List<Trait> traits)
@@ -60,7 +66,7 @@ public class TestEngine
 			String traitName = "";
 			for(int j=0; j<4; j++)
 				traitName += alph.charAt((int)(Math.random()*4));
-			traits.add(new Trait(traitName, Math.random()));
+			traits.add(new Trait(traitName, Math.random()*100));
 		}
 		return traits;
 	}

@@ -1,6 +1,7 @@
 package com.ibm.personafusion.model;
 
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -82,10 +83,14 @@ public class Person implements Comparable<Person>
 		List<String> stopWords = new ArrayList<String>();
 		try
 		{
-			Scanner sc = new Scanner(new File("person_source/stopWords.txt"));
-			String word = sc.nextLine();
-			word = word.trim();
-			stopWords.add(word);
+			URL url = new URL("https://dl.dropboxusercontent.com/u/27101002/personafusion/stopWords.txt");
+			Scanner sc = new Scanner(url.openStream());
+			while(sc.hasNextLine())
+			{
+				String word = sc.nextLine();
+				word = word.trim();
+				stopWords.add(word);
+			}
 		}
 		catch(Exception e)
 		{
