@@ -100,13 +100,15 @@ public class TwitterClient
 		out.close();
 	}
 	
+	private void downloadData() throws IOException, TwitterException
+	{
+		//this.downloadTweetsFromUsers("dev_usernames.txt", "dev_tweets.txt", 10000);
+		this.downloadTweetsFromUsers("mgr_usernames.txt", "mgr_tweets.txt", 10000);
+	}
+	
 	public static void main(String[] args) throws TwitterException, IOException
 	{
 		TwitterClient tc = new TwitterClient();
-		List<String> urls = tc.getUserTweetsText("@gvanrossum", 1);
-		
-		tc.downloadTweetsFromUsers("dev_usernames.txt", "dev_tweets.txt", 10000);
-		//List<String> urls = tc.getPhotoURLs("@gvanrossum", 1);
-		for (String u: urls) System.out.println(u);
+		tc.downloadData();
 	}
 }
