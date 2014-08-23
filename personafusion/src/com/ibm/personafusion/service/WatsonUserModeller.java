@@ -1,6 +1,10 @@
 package com.ibm.personafusion.service;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.apache.http.client.fluent.Executor;
@@ -9,8 +13,13 @@ import org.apache.http.entity.ContentType;
 
 import com.ibm.json.java.JSONArray;
 import com.ibm.json.java.JSONObject;
+import com.ibm.personafusion.model.Trait;
 
 /** A wrapper for accessing the Watson User Model API.
+ *  Usage: 
+ *  	WatsonUserModeller WUM = new WatsonUserModeller()
+ *  	WUM.getTraitsList("all of the twitter text")
+ *  
  *  @author Sean Welleck **/
 public class WatsonUserModeller 
 {
@@ -31,10 +40,37 @@ public class WatsonUserModeller
 		}
 	}
 	
+	/** Get the list of Traits for this text using the data returned by Watson. **/
+	public List<Trait> getTraitsList(String text)
+	{
+		List<Trait> traits = new ArrayList<Trait>();
+		String json = getProfileJSON(text);
+		List<Map<String,String>> lm = formatTraits(json);
+		for (Map<String, String> m : lm)
+		{
+			String id = m.get("id");
+			String val = m.get("value");
+			if (id != null)
+			{
+				double pct = 0.0;
+				/** NOTE: val == null means that this id is the name of a trait 'category',
+				 *  e.g. values, personality. We do not add categories to the 
+				 *  returned list of traits.
+				 */
+				if (val != null)
+				{
+					val = val.substring(0, val.length()-1);
+					pct = Double.parseDouble(val);
+					traits.add(new Trait(id, pct));
+				}
+			}
+		}
+		return traits;
+	}
 	
 	public String getProfileJSON(String text)
 	{
-    	return makePOST(BASE_URL, PROFILE_API, buildContent(text).toString());
+		return makePOST(BASE_URL, PROFILE_API, buildContent(text).toString());
 	}
 	
 	public String getVizHTML(String profileJSON)
@@ -51,6 +87,38 @@ public class WatsonUserModeller
 		return vizHTML;
 	}
 	
+	private static List<Map<String,String>> formatTraits(String profileJson){
+		List<Map<String,String>> arr = new ArrayList<Map<String,String>>();
+		try
+		{
+			JSONObject tree = JSONObject.parse(profileJson);
+			formatTree((JSONObject)tree.get("tree"), 0, arr);
+		} catch(Exception e) { e.printStackTrace(); }
+		return arr;
+	}
+	
+	private static void formatTree(JSONObject node, int level, List<Map<String,String>> arr) {	
+		if (node == null) return;
+		JSONArray children = (JSONArray)node.get("children");
+		if (level > 0 && (children == null || level != 2)) {
+			Map<String,String> obj = new HashMap<String,String>();
+			obj.put("id", (String)node.get("id"));
+			if (children != null) obj.put("title", "true");
+			if (node.containsKey("percentage")) {
+				double p = (Double)node.get("percentage");
+				p = Math.floor(p * 100.0);
+				obj.put("value", Double.toString(p) + "%");
+			}
+			arr.add(obj);
+		}
+		if (children != null && !"sbh".equals(node.get("id"))) {
+			for (int i = 0; i < children.size(); i++) {
+				formatTree((JSONObject)children.get(i), level + 1, arr);
+			}
+		}
+		
+	}
+	
 	private String makePOST(String base, String suffix, String content)
 	{
 		try
@@ -60,7 +128,6 @@ public class WatsonUserModeller
     			    .setHeader("Accept", "application/json")
     			    .bodyString(content, ContentType.APPLICATION_JSON)
     			    ).returnContent().asString();
-			System.out.println(profileJSON);
     		return profileJSON;
 		} catch (Exception e)
 		{
