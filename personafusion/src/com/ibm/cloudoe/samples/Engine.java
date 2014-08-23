@@ -1,5 +1,13 @@
 package com.ibm.cloudoe.samples;
 
-public class Engine {
+import java.util.List;
 
+public class Engine 
+{
+	List<Person> people;
+	
+	Engine()
+	{
+		
+	}
 }
