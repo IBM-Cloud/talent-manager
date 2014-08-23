@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.ibm.personafusion.model.Person;
+import com.ibm.personafusion.model.Person.Role;
 
 public class Engine 
 {
@@ -18,7 +19,7 @@ public class Engine
 	List<Person> query(Person p)
 	{
 		this.setQueryPerson(p);
-		this.setDistanceWeights(.5, .25 , .25);
+		this.setDistanceWeights(.5, 0, .5);
 		Collections.sort(this.people);
 		this.people.remove(0);
 		this.convertScores(this.people);

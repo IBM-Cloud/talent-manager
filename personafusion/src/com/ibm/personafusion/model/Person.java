@@ -5,10 +5,10 @@ import java.util.List;
 public class Person implements Comparable<Person>
 {
 	public String name;
-	List<Trait> traits;
+	public List<Trait> traits;
 	public enum Role {DEV, Manager};
-	Role role;
-	ResumeInfo resumeInfo;
+	public Role role;
+	public ResumeInfo resumeInfo;
 	
 	//one queryPerson for everyone
 	static Person queryPerson;
