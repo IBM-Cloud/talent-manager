@@ -1,4 +1,4 @@
-package com.ibm.cloudoe.samples;
+package com.ibm.personafusion.model;
 
 /*
  * Note Traits are from the Watson API

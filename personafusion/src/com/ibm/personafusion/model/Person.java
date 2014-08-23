@@ -1,4 +1,4 @@
-package com.ibm.cloudoe.samples;
+package com.ibm.personafusion.model;
 
 import java.util.List;
 

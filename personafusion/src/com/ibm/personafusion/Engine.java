@@ -1,6 +1,8 @@
-package com.ibm.cloudoe.samples;
+package com.ibm.personafusion;
 
 import java.util.List;
+
+import com.ibm.personafusion.model.Person;
 
 public class Engine 
 {

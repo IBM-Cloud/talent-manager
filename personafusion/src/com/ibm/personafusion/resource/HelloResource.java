@@ -1,4 +1,4 @@
-package com.ibm.cloudoe.samples;
+package com.ibm.personafusion.resource;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
