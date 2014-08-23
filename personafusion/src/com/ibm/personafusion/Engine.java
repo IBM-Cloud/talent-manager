@@ -8,8 +8,14 @@ public class Engine
 {
 	List<Person> people;
 	
-	Engine()
+	Engine(List<Person> people)
 	{
-		
+		this.people = people;
+	}
+	
+	List<Person> query(Person p)
+	{
+		//sort person list based off query person p
+		return this.people;
 	}
 }
