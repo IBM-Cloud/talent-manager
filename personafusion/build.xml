@@ -19,6 +19,7 @@
     	<pathelement location="dep-jar/commons-codec-1.6.jar"/>
     	<pathelement location="dep-jar/commons-io-2.4.jar"/>
     	<pathelement location="dep-jar/fluent-hc-4.3.4.jar"/>
+    	<pathelement location="dep-jar/twitter4j-core-4.0.2.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>

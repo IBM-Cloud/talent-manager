@@ -17,8 +17,8 @@ import com.ibm.personafusion.model.Trait;
 
 /** A wrapper for accessing the Watson User Model API.
  *  Usage: 
- *  	WatsonUserModeller WUM = new WatsonUserModeller()
- *  	WUM.getTraitsList("all of the twitter text")
+ *  	WatsonUserModeller WUM = new WatsonUserModeller();
+ *  	List<Trait> traits = WUM.getTraitsList("all of the twitter text");
  *  
  *  @author Sean Welleck **/
 public class WatsonUserModeller 
@@ -40,7 +40,8 @@ public class WatsonUserModeller
 		}
 	}
 	
-	/** Get the list of Traits for this text using the data returned by Watson. **/
+	/** Get the list of Traits for this text using the data 
+	 *  returned by Watson. **/
 	public List<Trait> getTraitsList(String text)
 	{
 		List<Trait> traits = new ArrayList<Trait>();
@@ -53,9 +54,9 @@ public class WatsonUserModeller
 			if (id != null)
 			{
 				double pct = 0.0;
-				/** NOTE: val == null means that this id is the name of a trait 'category',
-				 *  e.g. values, personality. We do not add categories to the 
-				 *  returned list of traits.
+				/** NOTE: val == null means that this id is the name of a 
+				 *  trait 'category'; e.g. values, personality. 
+				 *  We do not add categories to the returned list of traits.
 				 */
 				if (val != null)
 				{
