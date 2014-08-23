@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="dep-jar/httpcore-4.3.2.jar"/>
 	<classpathentry kind="lib" path="dep-jar/httpmime-4.3.4.jar"/>
 	<classpathentry kind="lib" path="dep-jar/JSON4J.jar"/>
+	<classpathentry kind="lib" path="dep-jar/twitter4j-core-4.0.2.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>
