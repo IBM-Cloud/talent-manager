@@ -30,12 +30,15 @@ public class TestEngine
 		
 		
 		//Engine Example
+		
+		//FIX CLONING SO YOU DONT KEEP DELETING THE QUERY AT POSITION 0
 		Engine engine = new Engine(people);
 		List<Person> peopleResults = engine.query(people.get(0));
 		System.out.println(peopleResults.toString());
 		
-		List<Person> peopleResultsName = engine.query("c");
-		System.out.println(peopleResults.toString());
+		Engine engine2 = new Engine(people);
+		List<Person> peopleResultsName = engine2.query("c");
+		System.out.println(peopleResultsName.toString());
 	}
 	
 	List<Trait> genTraits(List<Trait> traits)
