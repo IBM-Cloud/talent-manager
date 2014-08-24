@@ -49,8 +49,8 @@ angular.module('recruiterApp')
         }
       })
 
-      console.log('Updated List:');
-      console.log($rootScope.filteredCandidates);
+      // console.log('Updated List:');
+      // console.log($rootScope.filteredCandidates);
     };
 
     // TAGS STUFFS
@@ -62,6 +62,16 @@ angular.module('recruiterApp')
          var tag = $(this).val();
           if(tag.length > 0){
             $("<span class='tag' style='display:none' data-name='" +tag+ "'><span class='close'>&times;</span>" +tag+ " </span>").insertBefore(this).fadeIn(100);
+
+            var skillTagArray = tag.split(' ');
+            for (var i=0; i<=skillTagArray.length; i++) {
+              if (skillTagArray[i] != null) {
+                skillTagArray[i] = skillTagArray[i].toLowerCase();
+                skillTagArray[i] = skillTagArray[i].substring(0,1).toUpperCase() + skillTagArray[i].substring(1);
+              }
+            }
+            tag=skillTagArray.join(' ');
+
             $scope.skills.push(tag);
             console.log($scope.skills);
             $scope.hasSkills();
