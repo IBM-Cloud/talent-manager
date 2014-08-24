@@ -34,7 +34,7 @@ public class SearchController
 		
 		if (fname == null || lname == null)
 		{
-			return Response.serverError().build();
+			return error();
 		}
 		
 		String fullName = fname + " " + lname;
@@ -72,6 +72,14 @@ public class SearchController
 			}
 		}
 		return null;
+	}
+	
+	private Response error()
+	{
+		return Response.serverError()
+				.header("Access-Control-Allow-Origin", "*")
+	            .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+	            .build();
 	}
 
 }

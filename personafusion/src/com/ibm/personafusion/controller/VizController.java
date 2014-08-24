@@ -29,7 +29,7 @@ public class VizController
 		
 		if (fname == null || lname == null)
 		{
-			return Response.serverError().build();
+			return error();
 		}
 		
 		String fullName = fname + " " + lname;
@@ -38,7 +38,7 @@ public class VizController
 		Person p = SearchController.getPersonFromList(fullName.toUpperCase());
 		if (p == null)
 		{
-			return Response.serverError().build();
+			return error();
 		}
 		
 		WatsonUserModeller WUM = new WatsonUserModeller();
@@ -46,7 +46,7 @@ public class VizController
 		
 		if (vizHTML == null)
 		{
-			return Response.serverError().build();
+			return error();
 		}
 		
 		return Response.ok(vizHTML).header("Access-Control-Allow-Origin", "*")
@@ -54,4 +54,11 @@ public class VizController
 	            .build();
 	}
 	
+	private Response error()
+	{
+		return Response.serverError()
+				.header("Access-Control-Allow-Origin", "*")
+	            .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+	            .build();
+	}
 }
