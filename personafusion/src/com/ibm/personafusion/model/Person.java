@@ -109,6 +109,7 @@ public class Person implements Comparable<Person>
 			{
 				if(tweetWord.length() < 2)
 					continue;
+				tweetWord = tweetWord.toLowerCase();
 				if(keyMapCount.containsKey(tweetWord))
 				{
 					int value = keyMapCount.get(tweetWord);
