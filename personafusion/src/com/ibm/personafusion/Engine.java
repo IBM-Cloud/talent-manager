@@ -63,7 +63,7 @@ public class Engine
 		
 		for(Person p : people)
 		{
-			p.distToQueryPerson = minDist / (p.distToQueryPerson);
+			p.distToQueryPerson = (int) (minDist*100.0 / (p.distToQueryPerson));
 		}
 	}
 	
