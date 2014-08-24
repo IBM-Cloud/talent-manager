@@ -6,6 +6,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import com.ibm.personafusion.Engine;
@@ -24,7 +25,7 @@ public class SearchController
 	
 	/** Returns search results as a JSON string. **/
 	@GET
-	public String handleSearch(@Context UriInfo ui)
+	public Response handleSearch(@Context UriInfo ui)
 	{
 		System.out.println("Num people: " + people.size());
 		MultivaluedMap<String, String> queryParams = ui.getQueryParameters();
@@ -33,7 +34,7 @@ public class SearchController
 		
 		if (fname == null || lname == null)
 		{
-			return "Error: fname and lname query parameters cannot be null.";
+			return Response.serverError().build();
 		}
 		
 		String fullName = fname + " " + lname;
@@ -47,7 +48,9 @@ public class SearchController
 		
 		String json = JsonUtils.getListPersonJson(results);
 		System.out.println(json);
-		return json;
+		return Response.ok(json).header("Access-Control-Allow-Origin", "*")
+	            .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+	            .build();
 	}
 	
 	/** Returns null if a parameter does not exist. **/
