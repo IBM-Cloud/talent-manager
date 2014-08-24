@@ -143,6 +143,7 @@ public class PersonListGenerator {
 					Person newPerson = new Person(name, traitList, ri, Person.Role.DEV);
 					newPerson.tweets = tweets;
 					newPerson.image_url = imgURL;
+					System.out.println(newPerson.image_url);
 					result.add(newPerson);
 					
 					pplCounter++;
