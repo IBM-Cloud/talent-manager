@@ -13,6 +13,7 @@ import org.apache.http.entity.ContentType;
 
 import com.ibm.json.java.JSONArray;
 import com.ibm.json.java.JSONObject;
+import com.ibm.personafusion.model.Person;
 import com.ibm.personafusion.model.Trait;
 
 /** A wrapper for accessing the Watson User Model API.
@@ -69,12 +70,20 @@ public class WatsonUserModeller
 		return traits;
 	}
 	
-	public String getProfileJSON(String text)
+	public String getPersonVizHTML(Person p)
+	{
+		if (p == null) { return null; }
+		String profileJSON = this.getProfileJSON(combine(p.tweets));
+		String vizHTML = this.getVizHTML(profileJSON);
+		return vizHTML;
+	}
+	
+	private String getProfileJSON(String text)
 	{
 		return makePOST(BASE_URL, PROFILE_API, buildContent(text).toString());
 	}
 	
-	public String getVizHTML(String profileJSON)
+	private String getVizHTML(String profileJSON)
 	{
 		String vizHTML = null;
 		try
@@ -170,6 +179,16 @@ public class WatsonUserModeller
     	content.put("contentItems", contentItems);
     	contentItems.add(contentItem);
     	return content;
+	}
+	
+	private static String combine(List<String> lst)
+	{
+		String out = "";
+		for (String s: lst)
+		{
+			out += s;
+		}
+		return out;
 	}
 	
 }

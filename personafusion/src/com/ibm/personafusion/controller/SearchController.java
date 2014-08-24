@@ -54,11 +54,24 @@ public class SearchController
 	}
 	
 	/** Returns null if a parameter does not exist. **/
-	private String getParam(String key, MultivaluedMap<String, String> qp)
+	public static String getParam(String key, MultivaluedMap<String, String> qp)
 	{
 		List<String> vals = qp.get(key);
 		if (vals == null || vals.size() == 0) return null;
 		return vals.get(0);
+	}
+	
+	/** Retrieve a person by name from the global list. **/
+	public static Person getPersonFromList(String fullname)
+	{
+		for (Person p: SearchController.people)
+		{
+			if (p != null && p.name != null && p.name.equals(fullname))
+			{
+				return p;
+			}
+		}
+		return null;
 	}
 
 }

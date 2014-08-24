@@ -11,13 +11,6 @@ public class ModelingResource {
 	
 	@GET
 	public String getInformation() {
-		String text = "This is a test of the service.";
-		String profile = WUM.getProfileJSON(text);
-		String vizHTML = WUM.getVizHTML(profile);
-		if (vizHTML != null)
-		{
-			return vizHTML;
-		}
 		return "Error";
 	}
 }
