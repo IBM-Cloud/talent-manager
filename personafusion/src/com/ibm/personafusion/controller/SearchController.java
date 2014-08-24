@@ -5,6 +5,9 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.UriInfo;
 
 import com.ibm.personafusion.Engine;
 import com.ibm.personafusion.infogen.PersonListGenerator;
@@ -21,18 +24,24 @@ public class SearchController
 	
 	/** Returns search results as a JSON string. **/
 	@GET
-	public String handleSearch(@QueryParam("fname") String fname, @QueryParam("lname") String lname)
+	public String handleSearch(@Context UriInfo ui)
 	{
+		MultivaluedMap<String, String> queryParams = ui.getQueryParameters();
+		String fname = queryParams.get("fname").get(0);
+		String lname = queryParams.get("lname").get(0);
 		System.out.println("Num people: " + people.size());
-		// instantiate new Engine
+		System.out.println("fname=" + fname + " lname=" + lname);
+		
 		Engine engine = new Engine(people);
-		List<Person> results = engine.query(fname + " " + lname);
-		String str = "";
-		for (Person p: results)
-		{
-			str += p.name;
-		}
-		return str;
+		System.out.println("Engine created.");
+		
+		String fullName = fname + " " + lname;
+		List<Person> results = engine.query(fullName);
+		System.out.println("Num results: " + results.size());
+		
+		String json = JsonUtils.getListPersonJson(results);
+		System.out.println(json);
+		return json;
 	}
 
 }
