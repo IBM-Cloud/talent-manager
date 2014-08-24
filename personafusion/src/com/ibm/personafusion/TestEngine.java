@@ -43,8 +43,11 @@ public class TestEngine
 		List<Person> peopleResultsGen = engineGen.query("Megan Keys");
 		String pJsonQuery = jsonUtils.getJson(genPeople.get(0));
 		System.out.println(pJsonQuery);
-		System.out.println(peopleResultsGen.get(1).name);
+		System.out.println(peopleResultsGen.get(0).name);
+		System.out.println(peopleResultsGen.get(0).distToQueryPerson);
 		System.out.println(peopleResultsGen.get(1).distToQueryPerson);
+		System.out.println(peopleResultsGen.get(2).distToQueryPerson);
+		System.out.println(peopleResultsGen.get(3).distToQueryPerson);
 		String pJson = jsonUtils.getJson(peopleResultsGen.get(1));
 		System.out.println(pJson);
 		

@@ -18,7 +18,7 @@ public class Engine
 		this.people = new ArrayList<Person>();
 		for(Person p : people)
 		{
-			this.people.add(new Person(p.name, p.traits, p.image_url, p.resumeInfo, p.role));
+			this.people.add(new Person(p.name, p.traits, p.image_url, p.resumeInfo, p.role, p.keyWords));
 		}
 	}
 	
@@ -37,7 +37,7 @@ public class Engine
 		personName = personName.toUpperCase();
 		//get person with the person name
 		this.setQueryPerson(this.getPersonGivenName(personName));
-		this.setDistanceWeights(.5, .25 , .25);
+		this.setDistanceWeights(.5, 0 , .5);
 		Collections.sort(this.people);
 		this.people.remove(0);
 		this.convertScores(this.people);
