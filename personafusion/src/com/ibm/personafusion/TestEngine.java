@@ -40,7 +40,7 @@ public class TestEngine
 		JsonUtils jsonUtils = new JsonUtils();
 		Engine engineGen = new Engine(genPeople);
 		//List<Person> peopleResultsGen = engineGen.query(genPeople.get(0));
-		List<Person> peopleResultsGen = engineGen.query("Megan Keys");
+		List<Person> peopleResultsGen = engineGen.query("EMORY WREN");
 		String pJsonQuery = jsonUtils.getJson(genPeople.get(0));
 		System.out.println(pJsonQuery);
 		System.out.println(peopleResultsGen.get(0).name);
@@ -48,6 +48,14 @@ public class TestEngine
 		System.out.println(peopleResultsGen.get(1).distToQueryPerson);
 		System.out.println(peopleResultsGen.get(2).distToQueryPerson);
 		System.out.println(peopleResultsGen.get(3).distToQueryPerson);
+		System.out.println(peopleResultsGen.get(4).distToQueryPerson);
+		System.out.println(peopleResultsGen.get(5).distToQueryPerson);
+		System.out.println(peopleResultsGen.get(6).distToQueryPerson);
+		System.out.println(peopleResultsGen.get(7).distToQueryPerson);
+		System.out.println(peopleResultsGen.get(8).distToQueryPerson);
+		System.out.println(peopleResultsGen.get(9).distToQueryPerson);
+		System.out.println(peopleResultsGen.get(10).distToQueryPerson);
+		System.out.println(peopleResultsGen.get(11).distToQueryPerson);
 		String pJson = jsonUtils.getJson(peopleResultsGen.get(1));
 		System.out.println(pJson);
 		

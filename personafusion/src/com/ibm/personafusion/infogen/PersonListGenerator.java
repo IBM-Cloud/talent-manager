@@ -62,6 +62,7 @@ public class PersonListGenerator {
 			String line;
 			while((line = in.readLine()) != null) {
 				line = line.trim();
+				line = line.replaceAll("\n", "");
 				if(line.length() < 10) continue;
 				initialDevTweets.add(line);
 			}
@@ -81,6 +82,7 @@ public class PersonListGenerator {
 			String line;
 			while((line = in.readLine()) != null) {
 				line = line.trim();
+				line = line.replaceAll("\n", "");
 				if(line.length() < 10) continue;
 				initialManTweets.add(line);
 			}
@@ -128,6 +130,9 @@ public class PersonListGenerator {
 						tweets.add(line);
 						onetweetline += line;
 					}
+					
+					System.out.println("One tweet line:");
+					System.out.println(onetweetline);
 					
 					WatsonUserModeller WUM = new WatsonUserModeller();
 					traitList = WUM.getTraitsList(onetweetline);
