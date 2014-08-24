@@ -10,7 +10,9 @@ import javax.ws.rs.core.UriInfo;
 import com.ibm.personafusion.model.Person;
 import com.ibm.personafusion.service.WatsonUserModeller;
 
-/** Visualize a person's personality traits.
+/** Handles the /api/viz API endpoint.
+ *  Visualizes a person's personality traits.
+ *  Requires 'fname' and 'lname' query parameters to search.
  *  Returns an HTML string of the visualization.
  *  @author Sean Welleck **/
 @Path("/viz")
@@ -52,6 +54,4 @@ public class VizController
 	            .build();
 	}
 	
-
-
 }

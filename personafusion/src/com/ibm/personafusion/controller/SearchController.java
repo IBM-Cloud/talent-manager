@@ -13,8 +13,8 @@ import com.ibm.personafusion.Engine;
 import com.ibm.personafusion.infogen.PersonListGenerator;
 import com.ibm.personafusion.model.Person;
 
-/** The controller for the Search functionality.
- *  Handles GET requests to /search.
+/** Handles the GET /api/search endpoint.
+ *  The controller for the Search functionality.
  *  Requires 'fname' and 'lname' query parameters to search.
  *  @author Sean Welleck 
  **/

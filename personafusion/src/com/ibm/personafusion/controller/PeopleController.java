@@ -6,13 +6,15 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+/** Handles the GET /api/people endpoint.
+ *  Returns a JSON representation of all of the Person objects. 
+ *  @author Sean Welleck **/
 @Path("/people")
 public class PeopleController 
 {
 	
-	/** Returns people results as a JSON string. **/
 	@GET
-	public Response handleSearch()
+	public Response handle()
 	{
 		String json = JsonUtils.getListPersonJson(SearchController.people);
 		System.out.println(json);

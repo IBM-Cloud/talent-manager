@@ -20,7 +20,8 @@ import com.ibm.personafusion.model.Trait;
  *  Usage: 
  *  	WatsonUserModeller WUM = new WatsonUserModeller();
  *  	List<Trait> traits = WUM.getTraitsList("all of the twitter text");
- *  
+ *    
+ *  	String vizHTML     = WUM.getPersonVizHTML(personObject);
  *  @author Sean Welleck **/
 public class WatsonUserModeller 
 {
@@ -70,6 +71,8 @@ public class WatsonUserModeller
 		return traits;
 	}
 	
+	/** Produce a visualization of a Person's traits based
+	 *  on the text of their tweets. Uses the Watson API. **/
 	public String getPersonVizHTML(Person p)
 	{
 		if (p == null) { return null; }
@@ -78,11 +81,15 @@ public class WatsonUserModeller
 		return vizHTML;
 	}
 	
+	/** Get a personality profile from Watson based on the input text.
+	 *  Returns a string of JSON. **/
 	private String getProfileJSON(String text)
 	{
 		return makePOST(BASE_URL, PROFILE_API, buildContent(text).toString());
 	}
 	
+	/** Get a visualization from Watson based on the input personality profile,
+	 *  e.g. from the output of getProfileJSON(). Returns a string of HTML. **/
 	private String getVizHTML(String profileJSON)
 	{
 		String vizHTML = null;
