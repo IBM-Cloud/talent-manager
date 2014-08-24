@@ -140,7 +140,7 @@ public class PersonListGenerator {
 //					}
 //					System.out.println();
 					
-					Person newPerson = new Person(name, traitList, ri, Person.Role.DEV);
+					Person newPerson = new Person(name, traitList, imgURL, ri, Person.Role.DEV);
 					newPerson.tweets = tweets;
 					newPerson.image_url = imgURL;
 					result.add(newPerson);
@@ -173,7 +173,7 @@ public class PersonListGenerator {
 					
 					System.out.println("Got past traiting.");
 					
-					Person newPerson = new Person(name, traitList, ri, Person.Role.Manager);
+					Person newPerson = new Person(name, traitList, imgURL, ri, Person.Role.Manager);
 					newPerson.tweets = tweets;
 					newPerson.image_url = imgURL;
 					result.add(newPerson);

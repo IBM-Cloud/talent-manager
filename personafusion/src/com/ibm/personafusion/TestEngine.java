@@ -20,6 +20,7 @@ public class TestEngine
 	
 	void doit()
 	{		
+		/*
 		List<Person> people = new ArrayList<Person>();
 		String alphName = "abcdefghij";
 		for(int i=0; i<10; i++)
@@ -28,6 +29,7 @@ public class TestEngine
 			List<Trait> traits = new ArrayList<Trait>();
 			people.add(new Person(name, genTraits(traits), new ResumeInfo(), Person.Role.DEV));
 		}
+		*/
 		//System.out.println(people.toString());
 		
 		
@@ -37,7 +39,8 @@ public class TestEngine
 		List<Person> genPeople = PersonListGenerator.generateDistinctPeople(10);
 		JsonUtils jsonUtils = new JsonUtils();
 		Engine engineGen = new Engine(genPeople);
-		List<Person> peopleResultsGen = engineGen.query(genPeople.get(0));
+		//List<Person> peopleResultsGen = engineGen.query(genPeople.get(0));
+		List<Person> peopleResultsGen = engineGen.query("Megan Keys");
 		String pJsonQuery = jsonUtils.getJson(genPeople.get(0));
 		System.out.println(pJsonQuery);
 		System.out.println(peopleResultsGen.get(1).name);

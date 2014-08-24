@@ -18,7 +18,7 @@ public class Engine
 		this.people = new ArrayList<Person>();
 		for(Person p : people)
 		{
-			this.people.add(new Person(p.name, p.traits, p.resumeInfo, p.role));
+			this.people.add(new Person(p.name, p.traits, p.image_url, p.resumeInfo, p.role));
 		}
 	}
 	
