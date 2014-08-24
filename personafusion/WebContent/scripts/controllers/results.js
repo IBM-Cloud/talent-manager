@@ -107,5 +107,11 @@ angular.module('recruiterApp')
       templateUrl: 'views/_results-right.html'
     };
   })
+  .directive('userModal', function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'views/_user-modal.html'
+    };
+  })
   ;
 

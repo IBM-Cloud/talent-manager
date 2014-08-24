@@ -310,3 +310,7 @@ ul{
     font-weight: 200;
     text-align: center;
 }
+
+.modal-dialog {
+  width: 900px;
+}
