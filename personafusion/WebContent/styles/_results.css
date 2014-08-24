@@ -28,11 +28,25 @@
   color: white;
 }
 
+.persona-title1 {
+  font-size: 22px;
+  font-weight: 200;
+  margin-bottom: 10px;
+  color: white;
+  margin-top: 1em;
+}
+
 .persona-top {
   background: white;
   padding: 15px;
-  height: 310px;
+  height: 327px;
 }
+
+.persona-top1 {
+  background: white;
+  padding: 15px;
+  height: 238px;
+ }
 
 .title {
   font-size: 20px;
@@ -225,6 +239,9 @@
 ul.candidate-group {
   padding: 0;
   list-style-type: none;
+  height: 629px;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 li.candidate-item {
@@ -242,7 +259,8 @@ li.candidate-item {
 }
 
 .name-container {
-  margin-left: 3em;
+  /*margin-left: 3em;*/
+  margin-top: 5px;
   vertical-align: middle;
   font-weight: 200;
 }
@@ -312,7 +330,7 @@ ul{
 }
 
 .modal-dialog {
-  width: 900px;
+  width: 870px;
 }
 
 .more-button {

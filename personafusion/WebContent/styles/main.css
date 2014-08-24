@@ -1,3 +1,24 @@
+.mainInput::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #fff;
+    font-size: 16px;
+    opacity: 0.6;
+}
+.mainInput:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #fff;
+    opacity: 0.6;
+    font-size: 16px;
+}
+.mainInput::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #fff;
+    opacity: 0.6;
+    font-size: 16px;
+}
+.mainInput:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #fff;
+    font-size: 16px;
+    opacity: 0.6;
+}
+
 .person-box {
   display: block;
   float: left;
@@ -133,7 +154,7 @@ body {
 }
 
 #question {
-  margin: 14em auto;
+  margin: 10em auto;
   width: 55%;
   color: #fff;
   margin-bottom: 3em;
