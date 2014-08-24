@@ -122,12 +122,25 @@ public class Person implements Comparable<Person>
 		}
 		
 		List<TweetTerm> termList = new ArrayList<TweetTerm>();
+		List<String> stopWordsLower = new ArrayList<String>();
+		for(String stopWord : stopWords)
+			stopWordsLower.add(stopWord.toLowerCase());
 		for(String  tweetWord : keyMapCount.keySet())
 		{
 			//tweetWord = tweetWord.toLowerCase();
 			//System.out.println(tweetWord);
 			//System.out.println(keyMapCount.get(tweetWord));
-			if(!stopWords.contains(tweetWord))
+			String tempTweet = tweetWord.toLowerCase();
+			boolean cleanTweet = true;
+			String alph = "abcdefghijklmnopqrstuvwxyz";
+			for(char c : tempTweet.toCharArray())
+				if(!alph.contains(c + ""))
+			{
+				cleanTweet = false;
+			}
+			//System.out.println(tempTweet);
+			if(!cleanTweet) continue;
+			if(!stopWordsLower.contains(tempTweet))
 				termList.add(new TweetTerm(tweetWord, keyMapCount.get(tweetWord)));
 		}
 		Collections.sort(termList);
