@@ -16,12 +16,9 @@ public class JsonUtils
 	
 	public static String getListPersonJson(List<Person> people)
 	{
-		String jsonList = "";
-		for(Person p : people)
-		{
-			jsonList += getJson(p) + "\n";
-		}
-		return jsonList;
+		Gson gson = new Gson();
+		String json = gson.toJson(people);
+		return json;
 	}
 	
 }
