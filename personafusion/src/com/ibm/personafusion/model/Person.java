@@ -27,7 +27,7 @@ public class Person implements Comparable<Person>
 	//one set of weights for everyone
 	static double weightTraits, weightResume, weightRole;
 	
-	public Person(String name, List<Trait> traits, ResumeInfo resumeInfo, Role role)
+	public Person(String name, List<Trait> traits, String image_url, ResumeInfo resumeInfo, Role role)
 	{
 		this.name = name;
 		this.traits = traits;
@@ -37,7 +37,7 @@ public class Person implements Comparable<Person>
 		this.weightTraits = 1;
 		this.weightResume = 1;
 		this.weightRole = 1;
-		this.image_url = "";
+		this.image_url = image_url;
 		this.tweets = new ArrayList<String>();
 		this.keyWords = new ArrayList<String>();
 	}
