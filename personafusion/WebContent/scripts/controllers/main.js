@@ -43,7 +43,8 @@ angular.module('recruiterApp')
          console.log($rootScope.candidates);
         });
 
-      $scope.vizurl = 'http://personafusion.stage1.mybluemix.net/api/search?fname=' + $scope.firstName.toUpperCase() + '&lname=' + $scope.lastName.toUpperCase();
+      $scope.vizurl = 'http://personafusion.stage1.mybluemix.net/api/viz?fname=' + $scope.firstName.toUpperCase() + '&lname=' + $scope.lastName.toUpperCase();
+      console.log($scope.vizurl);
       $http.get($scope.vizurl).
         error(function(data) {
           console.log(data);
@@ -51,9 +52,9 @@ angular.module('recruiterApp')
         }).
         success(function(data) {
           console.log('VIZ OBJECT HERE');
-          console.log(data);
+          $rootScope.employeeViz=data;
+          $('#employeeViz').html($rootScope.employeeViz);
         });
-//VIZ
 
       $location.path( '/results' );
     };
