@@ -34,6 +34,7 @@ public class Engine
 	
 	public List<Person> query(String personName)
 	{
+		personName = personName.toUpperCase();
 		//get person with the person name
 		this.setQueryPerson(this.getPersonGivenName(personName));
 		this.setDistanceWeights(.5, .25 , .25);
