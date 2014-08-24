@@ -137,7 +137,7 @@
 
 .tag{
   display: inline-block;
-  background: #6AD;
+  background: #0abeef;
   color: #FFF;
   padding: 5px 15px 5px 18px;
   margin:2px 2px 2px 4px;
@@ -281,4 +281,32 @@ li.candidate-item {
 
 ul{
   padding-left: 0px;
+}
+
+#tag-typer{
+  border: 1px solid #0abeef;
+  box-shadow: 0px 0px 0px #FFF;
+  padding: 5px 15px;
+  color: #0abeef;
+}
+
+#tag-typer::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #0abeef;
+    font-weight: 200;
+    text-align: center;
+}
+#tag-typer:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #0abeef;
+    font-weight: 200;
+    text-align: center;
+}
+#tag-typer::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #0abeef;
+    font-weight: 200;
+    text-align: center;
+}
+#tag-typer:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #0abeef;
+    font-weight: 200;
+    text-align: center;
 }
