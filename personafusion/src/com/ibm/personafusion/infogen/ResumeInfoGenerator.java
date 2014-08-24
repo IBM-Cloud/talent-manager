@@ -127,7 +127,7 @@ public class ResumeInfoGenerator {
 				String skill = "";
 				Scanner scanner;
 				try {
-					URL url = new URL("https://dl.dropboxusercontent.com/u/27101002/personafusion/man_skill.txt");
+					URL url = new URL("https://dl.dropboxusercontent.com/u/27101002/personafusion/manager_skill.txt");
 					scanner = new Scanner(url.openStream());
 					
 					int counter = 0;
@@ -219,7 +219,7 @@ public class ResumeInfoGenerator {
 				String prev = "";
 				Scanner scanner;
 				try {
-					URL url = new URL("https://dl.dropboxusercontent.com/u/27101002/personafusion/man_prev.txt");
+					URL url = new URL("https://dl.dropboxusercontent.com/u/27101002/personafusion/manager_prev.txt");
 					scanner = new Scanner(url.openStream());
 					
 					int counter = 0;
