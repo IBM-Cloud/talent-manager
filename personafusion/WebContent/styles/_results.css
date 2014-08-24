@@ -40,6 +40,13 @@
   margin-left: 10px;
 }
 
+.detailedTitle {
+  font-size: 15px;
+  font-weight: 200;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
 .skillWord {
   margin-bottom: 10px;
 }
@@ -235,7 +242,7 @@ li.candidate-item {
 }
 
 .name-container {
-  margin-left: 1em;
+  margin-left: 3em;
   vertical-align: middle;
   font-weight: 200;
 }
@@ -264,4 +271,14 @@ li.candidate-item {
   display: inline-block;
   width: 30px;
   margin: 0 10px;
+}
+
+.detailedTitle li{
+  list-style: none;
+  color: #9ea0a1;
+  margin-left: 5px;
+}
+
+ul{
+  padding-left: 0px;
 }
