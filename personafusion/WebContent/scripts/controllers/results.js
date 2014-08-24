@@ -99,5 +99,12 @@ angular.module('recruiterApp')
       });
     });
 
-  });
+  })
+  .directive('resultsRight', function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'views/_results-right.html'
+    };
+  })
+  ;
 

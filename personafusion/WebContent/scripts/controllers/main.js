@@ -25,23 +25,37 @@ angular.module('recruiterApp')
       $scope.url = 'http://personafusion.stage1.mybluemix.net/api/search?fname=' + $scope.firstName.toUpperCase() + '&lname=' + $scope.lastName.toUpperCase();
       console.log($scope.url);
       $http.get($scope.url).
-      error(function(data) {
-        console.log(data);
-        console.log('error');
-      }).
-      success(function(data) {
-       // console.log(data);
-       $rootScope.candidates = data;
-       console.log('candidates loaded');
-       $rootScope.filteredCandidates = $rootScope.candidates;
+        error(function(data) {
+          console.log(data);
+          console.log('error');
+        }).
+        success(function(data) {
+         // console.log(data);
+         $rootScope.candidates = data;
+         console.log('candidates loaded');
+         $rootScope.filteredCandidates = $rootScope.candidates;
 
-       for (var i=0; i < $rootScope.filteredCandidates.length; i++) {
-          $rootScope.filteredCandidates[i].visible = true;
-       }
+         for (var i=0; i < $rootScope.filteredCandidates.length; i++) {
+            $rootScope.filteredCandidates[i].visible = true;
+         }
 
-       console.log('$rootScope.candidates retrieved from JSON:');
-       console.log($rootScope.candidates);
-      });
+         console.log('$rootScope.candidates retrieved from JSON:');
+         console.log($rootScope.candidates);
+        });
+
+      $scope.vizurl = 'http://personafusion.stage1.mybluemix.net/api/viz?fname=' + $scope.firstName.toUpperCase() + '&lname=' + $scope.lastName.toUpperCase();
+      console.log($scope.vizurl);
+      $http.get($scope.vizurl).
+        error(function(data) {
+          console.log(data);
+          console.log('error');
+        }).
+        success(function(data) {
+          console.log('VIZ OBJECT HERE');
+          $rootScope.employeeViz=data;
+          $('#employeeViz').html($rootScope.employeeViz);
+        });
+
       $location.path( '/results' );
     };
 
