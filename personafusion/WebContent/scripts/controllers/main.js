@@ -10,8 +10,9 @@ angular.module('recruiterApp')
        console.log($scope.employees);
       });
 
-    $rootScope.getResults = function(fullname) {
+    $rootScope.getResults = function(fullname,picurl) {
       $rootScope.selectedEmployee = fullname;
+      $rootScope.selectedEmployeePic = picurl;
       $scope.nameArray = fullname.split(' ');
       for (var i=0; i<=$scope.nameArray.length; i++) {
         if ($scope.nameArray[i] != null) {
