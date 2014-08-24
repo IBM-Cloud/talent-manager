@@ -42,6 +42,7 @@ angular.module('recruiterApp')
               console.log($rootScope.filteredCandidates[i].resumeInfo.techSkills);
               console.log('visible false');
               $rootScope.filteredCandidates[i].visible = false;
+              $rootScope.filteredCandidates[i].expanded = false;
               // $rootScope.filteredCandidates.splice(i,1);
               // $scope.hasSkills();
             }
