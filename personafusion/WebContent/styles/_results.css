@@ -31,7 +31,7 @@
 .persona-top {
   background: white;
   padding: 15px;
-  height: 300px;
+  height: 310px;
 }
 
 .title {
@@ -313,4 +313,10 @@ ul{
 
 .modal-dialog {
   width: 900px;
+}
+
+.more-button {
+  font-size: 15px;
+  margin-bottom: 20px;
+  padding: 5px 5px;
 }

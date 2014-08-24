@@ -5,18 +5,35 @@
     <div class="persona-top skill">
       <div class="row">
         <div class="col-md-6">
-          <div class = "title"><img src="{{selectedEmployeePic}}" /></div>
+          <div class = "title"><img src="{{selectedEmployeePic}}" style = "height: 130px;"/></div>
+          <div class="detailedTitle">{{selectedEmployee | capitalize}}'s Skills
+            <ul>
+              <li ng-repeat="skill in candidates[6].resumeInfo.techSkills | limitTo: 5">{{skill}}</li>
+            </ul>
+            </div>
         </div>
         <div class="col-md-6">
+
+          <div class="detailedTitle">{{selectedEmployee | capitalize}}'s Personality
+            <ul>
+              <li ng-repeat="trait in candidates[6].traits | limitTo: 5">
+                {{trait.traitName}}: {{trait.percent}}%
+                <div class="progress" style = "margin-bottom: 3px;">
+                  <div class="bar" style="width: {{trait.percent}}%; height: 100%; background-color: #0abeef;"></div>
+                </div>
+              </li>
+            </ul>
           <!-- Button trigger modal -->
-          <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+          <button class="btn btn-primary btn-lg more-button" data-toggle="modal" data-target="#myModal">
             More
           </button>
+          </div>
+
+
         </div>
 
         <user-modal></user-modal>
       </div>
-
     </div>
 
     <div class="persona-title">Skills you are looking for in candidates:</div>
