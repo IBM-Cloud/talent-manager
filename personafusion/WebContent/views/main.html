@@ -3,15 +3,15 @@
 	<div id = "question">
 	 	<p class="lead">
 	    	I need another
-	    	<input id = "inputRole" placeholder = "e.g. Developer" type="text" ng-model="search.role" value="" />
+	    	<input class = "mainInput" id = "inputRole" placeholder = "e.g. Dev or Manager" type="text" ng-model="search.role" value="" />
 	    	like
-	    	<input id = "inputName" placeholder = "e.g. Bradley" type="text" ng-model="search.name" />
+	    	<input class = "mainInput" id = "inputName" placeholder = "e.g. Emory Wren" type="text" ng-model="search.name" />
 	  	</p>
 	</div>
 
 	<div id = "profileTile" ng-show="search.role">
     	<div class="person-box" ng-repeat="employee in employees | filter:search:strict">
-  	  	<a ng-click="getResults(employee.name)"><div class="person-img">
+  	  	<a ng-click="getResults(employee.name, employee.image_url)"><div class="person-img">
           <img src="{{employee.image_url}}" height="180" width="180"/>
         </div></a>
   	  	<div class="person-name">{{employee.name | capitalize}}</div>

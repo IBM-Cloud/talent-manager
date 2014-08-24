@@ -28,11 +28,25 @@
   color: white;
 }
 
+.persona-title1 {
+  font-size: 22px;
+  font-weight: 200;
+  margin-bottom: 10px;
+  color: white;
+  margin-top: 1em;
+}
+
 .persona-top {
   background: white;
   padding: 15px;
-  height: 300px;
+  height: 327px;
 }
+
+.persona-top1 {
+  background: white;
+  padding: 15px;
+  height: 238px;
+ }
 
 .title {
   font-size: 20px;
@@ -137,7 +151,7 @@
 
 .tag{
   display: inline-block;
-  background: #6AD;
+  background: #0abeef;
   color: #FFF;
   padding: 5px 15px 5px 18px;
   margin:2px 2px 2px 4px;
@@ -225,6 +239,9 @@
 ul.candidate-group {
   padding: 0;
   list-style-type: none;
+  height: 629px;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 li.candidate-item {
@@ -242,7 +259,8 @@ li.candidate-item {
 }
 
 .name-container {
-  margin-left: 3em;
+  /*margin-left: 3em;*/
+  margin-top: 5px;
   vertical-align: middle;
   font-weight: 200;
 }
@@ -281,4 +299,42 @@ li.candidate-item {
 
 ul{
   padding-left: 0px;
+}
+
+#tag-typer{
+  border: 1px solid #0abeef;
+  box-shadow: 0px 0px 0px #FFF;
+  padding: 5px 15px;
+  color: #0abeef;
+}
+
+#tag-typer::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #0abeef;
+    font-weight: 200;
+    text-align: center;
+}
+#tag-typer:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #0abeef;
+    font-weight: 200;
+    text-align: center;
+}
+#tag-typer::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #0abeef;
+    font-weight: 200;
+    text-align: center;
+}
+#tag-typer:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #0abeef;
+    font-weight: 200;
+    text-align: center;
+}
+
+.modal-dialog {
+  width: 870px;
+}
+
+.more-button {
+  font-size: 15px;
+  margin-bottom: 20px;
+  padding: 5px 5px;
 }
