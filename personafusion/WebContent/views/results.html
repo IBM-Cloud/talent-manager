@@ -4,12 +4,16 @@
     <div class="persona-top skill col-md-6">
       <div class = "title">Required Skills</div>
       <div class = "skillWord">
-        <span class = "word">Javascript</span>
-        <span class = "word">HTML</span>
-        <span class = "word">Ruby on rails</span>
-        <span class = "word">CSS</span>
+        <label for="tag-typer">
+          <div id="tags">
+            <span class="tag" data-name="such tage"><span class="close">&times;</span>such tage</span>
+            <span class="tag" data-name="so color"><span class="close">&times;</span>so color</span>
+            <span class="tag" data-name="many type"><span class="close">&times;</span>many type</span>
+            <span class="tag" data-name="wow"><span class="close">&times;</span>wow</span>
+            <input id="tag-typer" type="text" placeholder="Add skill"/>
+          </div>
+        </label>
       </div>
-      <span class = "add">+</span>
     </div>
     <div class="persona-top personality col-md-6">
       <div class = "title">Personality</div>
@@ -19,31 +23,8 @@
     </div>
 
     <div id = "profilePIC"></div>
-
     <div class="search-keywords">
-      <h4>What other things are you looking for?</h4>
-
-      <label for="tag-typer">
-      <div id="tags">
-        <span class="tag" data-name="such tage"><span class="close">&times;</span>such tage</span>
-        <span class="tag" data-name="so color"><span class="close">&times;</span>so color</span>
-        <span class="tag" data-name="many type"><span class="close">&times;</span>many type</span>
-        <span class="tag" data-name="wow"><span class="close">&times;</span>wow</span>
-        <input id="tag-typer" type="text" placeholder="Add tag..."/>
-      </div>
-      </label>
-   <!--    <ul class="colors">
-        <li style="background: #F95;"></li>
-        <li style="background: #6AD;"></li>
-        <li style="background: #E77;"></li>
-        <li style="background: #6C7;"></li>
-        <li style="background: #AAA;"></li>
-      </ul> -->
-
-      <!--
-      Search skills: <input type="text" ng-model="search.skills" /><br/>
-      Search keywords: <input type="text" ng-model="search.keywords" />
-       -->
+      <div class="title">Personality</div>
     </div>
   </div>
 
