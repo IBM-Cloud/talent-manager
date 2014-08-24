@@ -59,4 +59,13 @@ angular.module('recruiterApp')
       $location.path( '/results' );
     };
 
+    $rootScope.toggleExpanded = function(candidate) {
+      if (candidate.expanded) {
+        candidate.expanded = false;
+      }
+      else {
+        candidate.expanded = true;
+      }
+    }
+
   });
