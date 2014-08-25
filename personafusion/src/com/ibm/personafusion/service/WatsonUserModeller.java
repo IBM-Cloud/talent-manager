@@ -13,13 +13,15 @@ import org.apache.http.entity.ContentType;
 
 import com.ibm.json.java.JSONArray;
 import com.ibm.json.java.JSONObject;
+import com.ibm.personafusion.model.Person;
 import com.ibm.personafusion.model.Trait;
 
 /** A wrapper for accessing the Watson User Model API.
  *  Usage: 
  *  	WatsonUserModeller WUM = new WatsonUserModeller();
  *  	List<Trait> traits = WUM.getTraitsList("all of the twitter text");
- *  
+ *    
+ *  	String vizHTML     = WUM.getPersonVizHTML(personObject);
  *  @author Sean Welleck **/
 public class WatsonUserModeller 
 {
@@ -69,12 +71,26 @@ public class WatsonUserModeller
 		return traits;
 	}
 	
-	public String getProfileJSON(String text)
+	/** Produce a visualization of a Person's traits based
+	 *  on the text of their tweets. Uses the Watson API. **/
+	public String getPersonVizHTML(Person p)
+	{
+		if (p == null) { return null; }
+		String profileJSON = this.getProfileJSON(combine(p.tweets));
+		String vizHTML = this.getVizHTML(profileJSON);
+		return vizHTML;
+	}
+	
+	/** Get a personality profile from Watson based on the input text.
+	 *  Returns a string of JSON. **/
+	private String getProfileJSON(String text)
 	{
 		return makePOST(BASE_URL, PROFILE_API, buildContent(text).toString());
 	}
 	
-	public String getVizHTML(String profileJSON)
+	/** Get a visualization from Watson based on the input personality profile,
+	 *  e.g. from the output of getProfileJSON(). Returns a string of HTML. **/
+	private String getVizHTML(String profileJSON)
 	{
 		String vizHTML = null;
 		try
@@ -170,6 +186,16 @@ public class WatsonUserModeller
     	content.put("contentItems", contentItems);
     	contentItems.add(contentItem);
     	return content;
+	}
+	
+	private static String combine(List<String> lst)
+	{
+		String out = "";
+		for (String s: lst)
+		{
+			out += s;
+		}
+		return out;
 	}
 	
 }

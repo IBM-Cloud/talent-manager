@@ -13,8 +13,8 @@ import com.ibm.personafusion.Engine;
 import com.ibm.personafusion.infogen.PersonListGenerator;
 import com.ibm.personafusion.model.Person;
 
-/** The controller for the Search functionality.
- *  Handles GET requests to /search.
+/** Handles the GET /api/search endpoint.
+ *  The controller for the Search functionality.
  *  Requires 'fname' and 'lname' query parameters to search.
  *  @author Sean Welleck 
  **/
@@ -34,7 +34,7 @@ public class SearchController
 		
 		if (fname == null || lname == null)
 		{
-			return Response.serverError().build();
+			return error();
 		}
 		
 		String fullName = fname + " " + lname;
@@ -54,11 +54,32 @@ public class SearchController
 	}
 	
 	/** Returns null if a parameter does not exist. **/
-	private String getParam(String key, MultivaluedMap<String, String> qp)
+	public static String getParam(String key, MultivaluedMap<String, String> qp)
 	{
 		List<String> vals = qp.get(key);
 		if (vals == null || vals.size() == 0) return null;
 		return vals.get(0);
+	}
+	
+	/** Retrieve a person by name from the global list. **/
+	public static Person getPersonFromList(String fullname)
+	{
+		for (Person p: SearchController.people)
+		{
+			if (p != null && p.name != null && p.name.equals(fullname))
+			{
+				return p;
+			}
+		}
+		return null;
+	}
+	
+	private Response error()
+	{
+		return Response.serverError()
+				.header("Access-Control-Allow-Origin", "*")
+	            .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+	            .build();
 	}
 
 }

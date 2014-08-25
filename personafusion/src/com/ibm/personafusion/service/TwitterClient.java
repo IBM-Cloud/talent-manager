@@ -18,7 +18,8 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.User;
 
-/** A wrapper for using the Twitter API. **/
+/** A wrapper for using the Twitter API. 
+ *  @author Sean Welleck **/
 public class TwitterClient 
 {
 	Twitter twitter;
