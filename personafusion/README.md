@@ -1,3 +1,3 @@
-# Persona Fusion
+# persona.fusion
 
-### Bringing personality to job candidate search.
+### bringing personality to job candidate search.
