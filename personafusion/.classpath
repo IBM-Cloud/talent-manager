@@ -17,5 +17,11 @@
 	<classpathentry kind="lib" path="dep-jar/JSON4J.jar"/>
 	<classpathentry kind="lib" path="dep-jar/twitter4j-core-4.0.2.jar"/>
 	<classpathentry kind="lib" path="dep-jar/gson-2.3.jar"/>
+	<classpathentry kind="lib" path="dep-jar/org.ektorp-1.2.2.jar"/>
+	<classpathentry kind="lib" path="dep-jar/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="dep-jar/log4j-over-slf4j-1.7.2.jar"/>
+	<classpathentry kind="lib" path="dep-jar/slf4j-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="dep-jar/slf4j-jdk14-1.7.2.jar"/>
+	<classpathentry kind="lib" path="dep-jar/jackson-all-1.8.10.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>
