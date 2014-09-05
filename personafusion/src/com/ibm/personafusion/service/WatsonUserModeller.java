@@ -13,6 +13,7 @@ import org.apache.http.entity.ContentType;
 
 import com.ibm.json.java.JSONArray;
 import com.ibm.json.java.JSONObject;
+import com.ibm.personafusion.Config;
 import com.ibm.personafusion.model.Person;
 import com.ibm.personafusion.model.Trait;
 
@@ -25,17 +26,22 @@ import com.ibm.personafusion.model.Trait;
  *  @author Sean Welleck **/
 public class WatsonUserModeller 
 {
-	private static final String USERNAME = "0cebddee-31b3-49a4-bf18-20e792fb6dea";
-	private static final String PASSWORD = "Mwn6NRgSReqI";
-	private static final String BASE_URL = "https://service-s.platform.watson.ibm.com/systemu/service/";
-	private static final String PROFILE_API = "/api/v2/profile";
-	private static final String VISUAL_API = "/api/v2/visualize";
+	private String username;
+	private String password;
+	private String base_url;
+	private String profile_api;
+	private String visual_api;
 	
 	private Executor executor;
 	
 	public WatsonUserModeller()
 	{
-		this.executor = Executor.newInstance().auth(USERNAME, PASSWORD);
+		this.username = Config.WATSON_USERNAME;
+		this.password = Config.WATSON_PASSWORD;
+		this.base_url = Config.WATSON_BASE_URL;
+		this.profile_api = Config.WATSON_PROF_API;
+		this.visual_api = Config.WATSON_VIZ_API;
+		this.executor = Executor.newInstance().auth(username, password);
 		if (this.executor == null) 
 		{ 
 			System.err.println("Authentication failed in WatsonUserModeller.");
@@ -85,7 +91,7 @@ public class WatsonUserModeller
 	 *  Returns a string of JSON. **/
 	private String getProfileJSON(String text)
 	{
-		return makePOST(BASE_URL, PROFILE_API, buildContent(text).toString());
+		return makePOST(base_url, profile_api, buildContent(text).toString());
 	}
 	
 	/** Get a visualization from Watson based on the input personality profile,
@@ -95,7 +101,7 @@ public class WatsonUserModeller
 		String vizHTML = null;
 		try
 		{
-			byte[] vizBytes = makePOSTByte(BASE_URL, VISUAL_API, profileJSON);
+			byte[] vizBytes = makePOSTByte(base_url, visual_api, profileJSON);
 			vizHTML = new String(vizBytes, "utf-8");
 		} catch (Exception e)
 		{

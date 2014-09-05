@@ -21,4 +21,11 @@ public class JsonUtils
 		return json;
 	}
 	
+	public static Person getPersonFromJson(String json)
+	{
+		Gson gson = new Gson();
+		Person p = gson.fromJson(json, Person.class);
+		return p;
+	}
+	
 }
