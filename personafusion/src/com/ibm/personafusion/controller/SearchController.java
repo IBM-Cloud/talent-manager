@@ -9,8 +9,9 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import com.ibm.personafusion.Config;
+import com.ibm.personafusion.Constants;
 import com.ibm.personafusion.Engine;
-import com.ibm.personafusion.infogen.PersonListGenerator;
 import com.ibm.personafusion.model.Person;
 
 /** Handles the GET /api/search endpoint.
@@ -21,7 +22,9 @@ import com.ibm.personafusion.model.Person;
 @Path("/search")
 public class SearchController 
 {
-	public static List<Person> people = PersonListGenerator.generateDistinctPeople(100);
+	/** Search for people who aren't current employees in the user's group. **/
+	public static List<Person> people = 
+			Config.cc.getAllPeopleNotInGroup(Constants.CURRENT_EMPLOYEES_GROUP);
 	
 	/** Returns search results as a JSON string. **/
 	@GET

@@ -7,6 +7,7 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import com.ibm.personafusion.Config;
 import com.ibm.personafusion.model.Person;
 import com.ibm.personafusion.service.WatsonUserModeller;
 
@@ -35,7 +36,7 @@ public class VizController
 		String fullName = fname + " " + lname;
 		System.out.println("fname=" + fname + " lname=" + lname);
 		
-		Person p = SearchController.getPersonFromList(fullName.toUpperCase());
+		Person p = Config.cc.getPerson(fullName.toUpperCase());
 		if (p == null)
 		{
 			return error();

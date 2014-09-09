@@ -1,5 +1,7 @@
 package com.ibm.personafusion;
 
+import com.ibm.personafusion.db.CloudantClient;
+
 public class Config 
 {
 	/** Cloudant **/
@@ -28,4 +30,6 @@ public class Config
 	public static final String WATSON_PROF_API = "/api/v2/profile";
 	
 	public static final String WATSON_VIZ_API = "/api/v2/visualize";
+	
+	public static CloudantClient cc = new CloudantClient();
 }

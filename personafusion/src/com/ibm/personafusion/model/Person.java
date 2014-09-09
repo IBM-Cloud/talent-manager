@@ -19,7 +19,7 @@ public class Person implements Comparable<Person>
 	public List<String> tweets;
 	public String image_url;
 	public List<String> keyWords;
-	public String id;
+	public String group;
 	
 	//one queryPerson for everyone
 	static Person queryPerson;
@@ -41,7 +41,6 @@ public class Person implements Comparable<Person>
 		this.image_url = image_url;
 		this.tweets = new ArrayList<String>();
 		this.keyWords = keyWords;
-		this.id = System.currentTimeMillis() + "";
 	}
 	
 	public Person(String name, List<Trait> traits, ResumeInfo resumeInfo)
@@ -58,7 +57,6 @@ public class Person implements Comparable<Person>
 		this.role = Role.DEV;
 		this.tweets = new ArrayList<String>();
 		this.keyWords = new ArrayList<String>();
-		this.id = System.currentTimeMillis() + "";
 	}
 	
 	public void setQueryPerson(Person p)

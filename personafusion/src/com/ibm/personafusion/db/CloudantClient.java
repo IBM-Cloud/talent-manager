@@ -31,6 +31,8 @@ public class CloudantClient
 	private String username;
 	private String password;
 	
+	
+	
 	public CloudantClient()
 	{
 		this.httpClient = null;
@@ -43,13 +45,21 @@ public class CloudantClient
 	}
 	
 	/** Put a Person into Cloudant using person.name as the unique id.
-	 *  Stored as { id: person.name, type: Person.class, json: toJSON(person) }
+	 *  Stored as :
+	 *  { 
+	 *  	id: person.name, 
+	 *  	type: Person.class, 
+	 *  	group: person.group, 
+	 *  	json: toJSON(person) 
+	 *  }
 	 */
 	public void putPerson(Person p)
 	{
 		HashMap<String, Object> data = new HashMap<String, Object>();
-		data.put(Constants.ID_KEY, p.name);
+		String name = p.name.toUpperCase();
+		data.put(Constants.ID_KEY, name);
 		data.put(Constants.TYPE_KEY, Person.class.getName());
+		data.put(Constants.GROUP_KEY, p.group);
 		System.out.println(data.get(Constants.TYPE_KEY));
 		data.put(Constants.JSON_KEY, JsonUtils.getJson(p));
 		this.putItem(data);
@@ -58,6 +68,7 @@ public class CloudantClient
 	/** Get a Person from Cloudant using name as the unique id. **/
 	public Person getPerson(String name)
 	{
+		name = name.toUpperCase();
 		@SuppressWarnings("unchecked")
 		HashMap<String, Object> obj = this.dbc.get(HashMap.class, name);
 		Person p = JsonUtils.getPersonFromJson((String)obj.get(Constants.JSON_KEY));
@@ -83,6 +94,56 @@ public class CloudantClient
 		}
 		System.out.println(
 			String.format("Retrieved %d Person entries.", people.size()));
+		return people;
+	}
+	
+	/** Get all Person objects in the specified group from Cloudant. **/
+	public List<Person> getAllPeopleInGroup(String groupName)
+	{
+		List<Person> people = new ArrayList<Person>();
+		List<String> docIds = dbc.getAllDocIds();
+		for(String docId : docIds)
+		{
+			@SuppressWarnings("unchecked")
+			HashMap<String, Object> obj = this.dbc.get(HashMap.class, docId);
+			if (obj.get(Constants.TYPE_KEY) != null && 
+				obj.get(Constants.TYPE_KEY).equals(Person.class.getName()) &&
+				obj.get(Constants.GROUP_KEY) != null &&
+				obj.get(Constants.GROUP_KEY).equals(groupName))
+			{
+				String json = (String)obj.get(Constants.JSON_KEY);
+				Person p = JsonUtils.getPersonFromJson(json);
+				people.add(p);
+			}
+		}
+		System.out.println(String.format(
+					"Retrieved %d Person entries for group %s.", 
+					people.size(), groupName));
+		return people;
+	}
+	
+	/** Get all Person objects in the specified group from Cloudant. **/
+	public List<Person> getAllPeopleNotInGroup(String groupName)
+	{
+		List<Person> people = new ArrayList<Person>();
+		List<String> docIds = dbc.getAllDocIds();
+		for(String docId : docIds)
+		{
+			@SuppressWarnings("unchecked")
+			HashMap<String, Object> obj = this.dbc.get(HashMap.class, docId);
+			if (obj.get(Constants.TYPE_KEY) != null && 
+				obj.get(Constants.TYPE_KEY).equals(Person.class.getName()) &&
+				obj.get(Constants.GROUP_KEY) != null &&
+				!obj.get(Constants.GROUP_KEY).equals(groupName))
+			{
+				String json = (String)obj.get(Constants.JSON_KEY);
+				Person p = JsonUtils.getPersonFromJson(json);
+				people.add(p);
+			}
+		}
+		System.out.println(String.format(
+					"Retrieved %d Person entries that are not in group %s.", 
+					people.size(), groupName));
 		return people;
 	}
 	
@@ -164,8 +225,10 @@ public class CloudantClient
 		cc.deleteAll();
 		
 		Person p = new Person("Alan Xia", null, null);
+		p.group = "group1";
 		cc.putPerson(p);
 		Person p2 = new Person("Prachi Snehal", null, null);
+		p2.group = "group2";
 		cc.putPerson(p2);
 		
 		Person alan = cc.getPerson("Alan Xia");
@@ -173,6 +236,12 @@ public class CloudantClient
 		
 		List<Person> people = cc.getAllPeople();
 		System.out.println("There are " + people.size() + " people.");
+		
+		List<Person> g1ppl = cc.getAllPeopleInGroup("group1");
+		System.out.println("There are " + g1ppl.size() + " people in group1.");
+		
+		List<Person> notg1ppl = cc.getAllPeopleNotInGroup("group1");
+		System.out.println(notg1ppl.get(0).name + " is not in group1.");
 		
 		cc.closeDBConnector();
 	}

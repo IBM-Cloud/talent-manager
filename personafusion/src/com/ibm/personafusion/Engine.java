@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import com.ibm.personafusion.model.Person;
-import com.ibm.personafusion.model.Person.Role;
 
 public class Engine 
 {
