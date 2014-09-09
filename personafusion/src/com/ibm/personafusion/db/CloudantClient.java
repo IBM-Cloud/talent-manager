@@ -15,6 +15,7 @@ import com.ibm.personafusion.Config;
 import com.ibm.personafusion.Constants;
 import com.ibm.personafusion.controller.JsonUtils;
 import com.ibm.personafusion.model.Person;
+import com.ibm.personafusion.model.Trait;
 
 /** A class for communicating with the Cloudant datastore. 
  *  See main() for example usage.
@@ -227,12 +228,17 @@ public class CloudantClient
 		Person p = new Person("Alan Xia", null, null);
 		p.group = "group1";
 		cc.putPerson(p);
-		Person p2 = new Person("Prachi Snehal", null, null);
+		
+		List<Trait> traits = new ArrayList<Trait>();
+		traits.add(new Trait("programming", .9));
+		traits.add(new Trait("being awesome", .95));
+		Person p2 = new Person("Dev God", traits, null);
 		p2.group = "group2";
 		cc.putPerson(p2);
 		
-		Person alan = cc.getPerson("Alan Xia");
-		System.out.println(alan.name);
+		Person testPerson = cc.getPerson("Dev God");
+		System.out.println(testPerson.name);
+		System.out.println(testPerson.traits);
 		
 		List<Person> people = cc.getAllPeople();
 		System.out.println("There are " + people.size() + " people.");
