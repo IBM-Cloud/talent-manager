@@ -58,8 +58,8 @@ public class PersonListGenerator {
 				System.out.println("PplCounter: " + pplCounter);
 				
 				WatsonUserModeller WUM = new WatsonUserModeller();
-				List<String> responseList = QuestionResponse.getResponseList();
-				String response = QuestionResponse.convertToFullString(responseList);
+				List<String> qaResponses = QuestionResponse.getResponseList();
+				String response = QuestionResponse.convertToFullString(qaResponses);
 				traitList = WUM.getTraitsList(response);				
 				
 //				for(String res : responseList) {
@@ -79,7 +79,12 @@ public class PersonListGenerator {
 					ResumeInfo ri = new ResumeInfo(techSkills, prevInfo);
 	
 					Person newPerson = new Person(name, traitList, imgURL, ri, Person.Role.DEV, new ArrayList<String>());
-					newPerson.responses = responseList;
+					
+					/*
+					 * ***TODO Restructure to read in a list of strings that represent the answers to interview questions
+					 */
+					newPerson.qaResponses = qaResponses;
+					
 					newPerson.keyWords = newPerson.getKeyWords(10);
 					newPerson.image_url = imgURL;
 					newPerson.group = Constants.CURRENT_EMPLOYEES_GROUP;
@@ -99,7 +104,9 @@ public class PersonListGenerator {
 					ResumeInfo ri = new ResumeInfo(techSkills, prevInfo);
 										
 					Person newPerson = new Person(name, traitList, imgURL, ri, Person.Role.Manager, new ArrayList<String>());
-					newPerson.responses = responseList;
+					
+					newPerson.qaResponses = qaResponses;
+					
 					newPerson.keyWords = newPerson.getKeyWords(10);
 					newPerson.image_url = imgURL;
 					newPerson.group = Constants.CURRENT_EMPLOYEES_GROUP;
@@ -117,7 +124,9 @@ public class PersonListGenerator {
 					ResumeInfo ri = new ResumeInfo(techSkills, prevInfo);
 					
 					Person newPerson = new Person(name, traitList, imgURL, ri, Person.Role.DEV, new ArrayList<String>());
-					newPerson.responses = responseList;
+					
+					newPerson.qaResponses = qaResponses;
+					
 					newPerson.keyWords = newPerson.getKeyWords(10);
 					newPerson.image_url = imgURL;
 					newPerson.group = "HAHAHA: Help Alan Heal A Healthy Athlete.";
@@ -135,7 +144,12 @@ public class PersonListGenerator {
 					ResumeInfo ri = new ResumeInfo(techSkills, prevInfo);
 					
 					Person newPerson = new Person(name, traitList, imgURL, ri, Person.Role.Manager, new ArrayList<String>());
-					newPerson.responses = responseList;
+					/*
+					 * ***TODO Restructure to read in a list of strings that represent the answers to interview questions
+					 */
+					
+					newPerson.qaResponses = qaResponses;
+
 					newPerson.keyWords = newPerson.getKeyWords(10);
 					newPerson.image_url = imgURL;
 					newPerson.group = "HAHAHA: Help Alan Heal A Healthy Athlete.";
