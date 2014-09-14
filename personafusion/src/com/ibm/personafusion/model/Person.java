@@ -16,7 +16,9 @@ public class Person implements Comparable<Person>
 	public enum Role {DEV, Manager};
 	public Role role;
 	public ResumeInfo resumeInfo;
-	public List<String> tweets;
+	//This will be the list of answers from the q & a of the person
+	//index 0 response to question 1, index 1 response to question 2 etc...
+	public List<String> qaResponses;
 	public String image_url;
 	public List<String> keyWords;
 	public String group;
@@ -39,7 +41,7 @@ public class Person implements Comparable<Person>
 		this.weightResume = 1;
 		this.weightRole = 1;
 		this.image_url = image_url;
-		this.tweets = new ArrayList<String>();
+		this.qaResponses = new ArrayList<String>();
 		this.keyWords = keyWords;
 	}
 	
@@ -55,7 +57,7 @@ public class Person implements Comparable<Person>
 		this.weightRole = 1;
 		this.image_url = "";
 		this.role = Role.DEV;
-		this.tweets = new ArrayList<String>();
+		this.qaResponses = new ArrayList<String>();
 		this.keyWords = new ArrayList<String>();
 	}
 	
@@ -103,7 +105,7 @@ public class Person implements Comparable<Person>
 		
 		List<String> keyWords = new ArrayList<String>();
 		Map<String, Integer> keyMapCount = new TreeMap<String, Integer>();
-		for(String tweet : this.tweets)
+		for(String tweet : this.qaResponses)
 		{
 			String[] tweetParts = tweet.split(" ");
 			for(String tweetWord : tweetParts)

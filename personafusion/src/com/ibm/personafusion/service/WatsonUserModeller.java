@@ -82,7 +82,7 @@ public class WatsonUserModeller
 	public String getPersonVizHTML(Person p)
 	{
 		if (p == null) { return null; }
-		String profileJSON = this.getProfileJSON(combine(p.tweets));
+		String profileJSON = this.getProfileJSON(combine(p.qaResponses));
 		String vizHTML = this.getVizHTML(profileJSON);
 		return vizHTML;
 	}
