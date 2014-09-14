@@ -1,196 +1,150 @@
 package com.ibm.personafusion.infogen;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
+import com.ibm.personafusion.Constants;
 import com.ibm.personafusion.model.*;
 import com.ibm.personafusion.service.WatsonUserModeller;
 
 public class PersonListGenerator {
 
-//	final static double devProb = 0.5;
-//	final static double manProb = 0.5;
-	final static int devNum = 50;
-	
-//	final static String devTweetsURL = "dev_tweets.txt";
-//	final static String manTweetsURL = "mgr_tweets.txt";
-	final static int tweetsPerPerson = 200;
-
-//	final static String uniqueNameListURL = "person_source/name/output.txt";
 	
 	public static void main(String[] args) {
-	//	long startTime = System.nanoTime();
-		generateDistinctPeople(100);
-	//	long endTime = System.nanoTime();
-
-	//	long duration = (endTime - startTime)/1000000;
-	//	System.out.println(duration + " milliseconds");
-		
+		generateDistinctPeople(100, 20, "IBM");		
 	}
 	
 	/**
-	 * EDIT: numPeople parameter will no longer affect the amount of people to be generated.
-	 * As of now, 100 people will always be generated.
+	 * Will generate a new randomized list of N people with unique names and random backgrounds/skills.
+	 * As of now, numPeople is currently maxxed at 100. Over 100 would give an error.
 	 * 
-	 * @param numPeople
-	 * @return
+	 * @param numPeople - Number of people to generate overall (Currently maxed at 100)
+	 * @param numCurrEmploy - How many people are to be under the current company. Must be less than numPeople
+	 * @param currEmploy - Name of the current company for the numCurrEmploy
+	 * @return Empty List if numCurrEmploy > numPeople.
 	 */
-	public static List<Person> generateDistinctPeople (int numPeople) {
+	public static List<Person> generateDistinctPeople (int numPeople, int numCurrEmploy, String currEmploy) {
+		
+		if(numCurrEmploy > numPeople) return new ArrayList<Person>();
 		
 		List<Person> result = new ArrayList<Person>();
+
+		int pplCounter = 1;
 		
-		Random rand = new Random();
-				
-		List<String> initialDevTweets = new ArrayList<String>();
+		String imgURL = "";
+		List<Trait> traitList;
 		
-		BufferedReader in;
-		try {
-			URL url = new URL("https://dl.dropboxusercontent.com/u/27101002/personafusion/dev_tweets.txt");
-			in = new BufferedReader(new InputStreamReader(url.openStream()));
-			String line;
-			while((line = in.readLine()) != null) {
-				line = line.trim();
-				line = line.replaceAll("\n", "");
-				if(line.length() < 10) continue;
-				initialDevTweets.add(line);
-			}
-			in.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}		
-		
-		System.out.println(initialDevTweets.size());
-		
-		List<String> initialManTweets = new ArrayList<String>();
-		try {
-			URL url = new URL("https://dl.dropboxusercontent.com/u/27101002/personafusion/mgr_tweets.txt");
-			in = new BufferedReader(new InputStreamReader(url.openStream()));
-			String line;
-			while((line = in.readLine()) != null) {
-				line = line.trim();
-				line = line.replaceAll("\n", "");
-				if(line.length() < 10) continue;
-				initialManTweets.add(line);
-			}
-			in.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		System.out.println(initialManTweets.size());
 		
 		try {
 			URL url = new URL("https://dl.dropboxusercontent.com/u/27101002/personafusion/imageLinks.txt");
 			Scanner scan0 = new Scanner(url.openStream());
-			String imgURL = "";
 			
-			int pplCounter = 1;
-			//Set<String> nameList = NameGenerator.generateDistinctFullNames(numPeople);
+			// Set<String> nameList = NameGenerator.generateDistinctFullNames(numPeople);
 			Set<String> nameList = getNameList();
 			for(String name : nameList) {
-				// Get 200 different tweets per person. Call Watson to get traits. Call keyword converter to get keywords.
+				// Call Watson to get traits. Call keyword converter to get keywords.
 				
 				if(scan0.hasNextLine()) {
 					imgURL = scan0.nextLine();
-				}
-				
-				List<Trait> traitList;				
-				
+				}				
+
 				System.out.println("PplCounter: " + pplCounter);
 				
-				if(pplCounter == 80) return result;
+				WatsonUserModeller WUM = new WatsonUserModeller();
+				List<String> responseList = QuestionResponse.getResponseList();
+				String response = QuestionResponse.convertToFullString(responseList);
+				traitList = WUM.getTraitsList(response);				
 				
+//				for(String res : responseList) {
+//					System.out.println(res);
+//				}
+								
 				// Assign a role
-				if(pplCounter < devNum) {
+				
+				// Devs working at curr company
+				if(pplCounter <= (numCurrEmploy/2)) {
+					
+					System.out.println("Dev - Curr");
+					
 					List<String> techSkills = ResumeInfoGenerator.generateTechSkill("Dev");
-					List<String> prevInfo = ResumeInfoGenerator.generatePrev("Dev");
+					List<String> prevInfo = new ArrayList<String>();
+					prevInfo.add(currEmploy);
 					ResumeInfo ri = new ResumeInfo(techSkills, prevInfo);
 	
-					List<String> tweets = new ArrayList<String>();
-					String onetweetline = "";
-					
-					while(tweets.size() != tweetsPerPerson) {
-						String line = initialDevTweets.remove(0);
-						tweets.add(line);
-						onetweetline += line;
-					}
-					
-					System.out.println("One tweet line:");
-					System.out.println(onetweetline);
-					
-					WatsonUserModeller WUM = new WatsonUserModeller();
-					traitList = WUM.getTraitsList(onetweetline);
-					
-//					System.out.println(name);
-//					System.out.println(onetweetline);
-//					System.out.println(imgURL);
-//					for(Trait i : traitList) {
-//						System.out.print(i.traitName + ": " + i.percent + ", ");
-//					}
-//					System.out.println();
-					
 					Person newPerson = new Person(name, traitList, imgURL, ri, Person.Role.DEV, new ArrayList<String>());
-					newPerson.tweets = tweets;
+					newPerson.responses = responseList;
 					newPerson.keyWords = newPerson.getKeyWords(10);
 					newPerson.image_url = imgURL;
-					System.out.println(newPerson.image_url);
+					newPerson.group = Constants.CURRENT_EMPLOYEES_GROUP;
 					result.add(newPerson);
 					
 					pplCounter++;
 					
 				}
+				// Managers working at curr company
+				else if (pplCounter <= numCurrEmploy) {
+					
+					System.out.println("Man - Curr");
+					
+					List<String> techSkills = ResumeInfoGenerator.generateTechSkill("Manager");
+					List<String> prevInfo = new ArrayList<String>();
+					prevInfo.add(currEmploy);
+					ResumeInfo ri = new ResumeInfo(techSkills, prevInfo);
+										
+					Person newPerson = new Person(name, traitList, imgURL, ri, Person.Role.Manager, new ArrayList<String>());
+					newPerson.responses = responseList;
+					newPerson.keyWords = newPerson.getKeyWords(10);
+					newPerson.image_url = imgURL;
+					newPerson.group = Constants.CURRENT_EMPLOYEES_GROUP;
+					result.add(newPerson);
+					
+					pplCounter++;
+				}
+				// Dev not at curr company
+				else if (pplCounter <= (numCurrEmploy + ((numPeople - numCurrEmploy)/2))) {
+					
+					System.out.println("Dev - Not Curr");
+					
+					List<String> techSkills = ResumeInfoGenerator.generateTechSkill("Dev");
+					List<String> prevInfo = ResumeInfoGenerator.generatePrev("Dev");
+					ResumeInfo ri = new ResumeInfo(techSkills, prevInfo);
+					
+					Person newPerson = new Person(name, traitList, imgURL, ri, Person.Role.DEV, new ArrayList<String>());
+					newPerson.responses = responseList;
+					newPerson.keyWords = newPerson.getKeyWords(10);
+					newPerson.image_url = imgURL;
+					newPerson.group = "HAHAHA: Help Alan Heal A Healthy Athlete.";
+					result.add(newPerson);
+					
+					pplCounter++;
+				}
+				// Manager not at curr company
 				else {
+					
+					System.out.println("Man - Not Curr");
+					
 					List<String> techSkills = ResumeInfoGenerator.generateTechSkill("Manager");
 					List<String> prevInfo = ResumeInfoGenerator.generatePrev("Manager");
 					ResumeInfo ri = new ResumeInfo(techSkills, prevInfo);
 					
-					System.out.println("Got past ResumeInfo.");
-					
-					List<String> tweets = new ArrayList<String>();
-					String onetweetline = "";
-					
-					while(tweets.size() != tweetsPerPerson) {
-						String line = initialManTweets.remove(0);
-						tweets.add(line);
-						onetweetline += line;
-					}
-					
-					System.out.println("Got past tweeting.");
-					
-					System.out.println(onetweetline);
-					
-					WatsonUserModeller WUM = new WatsonUserModeller();
-					traitList = WUM.getTraitsList(onetweetline);
-					
-					System.out.println("Got past traiting.");
-					
 					Person newPerson = new Person(name, traitList, imgURL, ri, Person.Role.Manager, new ArrayList<String>());
-					newPerson.tweets = tweets;
+					newPerson.responses = responseList;
 					newPerson.keyWords = newPerson.getKeyWords(10);
 					newPerson.image_url = imgURL;
+					newPerson.group = "HAHAHA: Help Alan Heal A Healthy Athlete.";
 					result.add(newPerson);
 					
 					pplCounter++;
 				}
 				
 			}
-			
 			scan0.close();
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
