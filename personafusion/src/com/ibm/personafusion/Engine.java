@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.ibm.personafusion.controller.SearchController;
+import com.ibm.personafusion.db.CloudantClient;
 import com.ibm.personafusion.model.Person;
 
 public class Engine 
@@ -34,11 +36,28 @@ public class Engine
 	public List<Person> query(String personName)
 	{
 		personName = personName.toUpperCase();
+		
+		
 		//get person with the person name
-		this.setQueryPerson(this.getPersonGivenName(personName));
-		this.setDistanceWeights(.5, 0 , .5);
+
+		// Here's the changed new code
+		CloudantClient cc = new CloudantClient();
+		for (Person p: people) {
+			Person queriedPer = cc.getPerson(personName);
+			if(queriedPer == null) System.out.println("queriedPerson is null");
+			p.setQueryPerson(queriedPer);
+//			p.setDistanceWeights(.5,  0, .5);
+		}
+		
+		
+		//this.setQueryPerson(this.getPersonGivenName(personName));
+		//System.out.println("Set person's name: " + this.people.get(0).name);
+		//this.setDistanceWeights(.5, 0 , .5);
+		
 		Collections.sort(this.people);
-		this.people.remove(0);
+		
+		// this.people.remove(0);
+		
 		this.convertScores(this.people);
 		return this.people;
 	}
@@ -75,4 +94,6 @@ public class Engine
 	{
 		people.get(0).setDistanceWeights(weightTraits, weightResume, weightRole);
 	}
+	
+	
 }
