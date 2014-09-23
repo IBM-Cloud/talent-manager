@@ -62,6 +62,7 @@ angular
     $rootScope.filteredCandidates = [];
     $rootScope.selectedEmployee = [];
     $rootScope.selectedEmployeePic = [];
+    $rootScope.selectedEmployeeResponses = [];
     $rootScope.employeeViz = '';
   })
 ;

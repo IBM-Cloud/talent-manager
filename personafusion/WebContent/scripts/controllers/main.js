@@ -10,9 +10,11 @@ angular.module('recruiterApp')
        console.log($scope.employees);
       });
 
-    $rootScope.getResults = function(fullname,picurl) {
+    $rootScope.getResults = function(fullname,picurl,qaresponses) {
       $rootScope.selectedEmployee = fullname;
       $rootScope.selectedEmployeePic = picurl;
+      $rootScope.selectedEmployeeResponses = qaresponses;
+
       $scope.nameArray = fullname.split(' ');
       for (var i=0; i<=$scope.nameArray.length; i++) {
         if ($scope.nameArray[i] != null) {
@@ -42,6 +44,8 @@ angular.module('recruiterApp')
 
          console.log('$rootScope.candidates retrieved from JSON:');
          console.log($rootScope.candidates);
+         console.log("QA Responses");
+         console.log($rootScope.selectedEmployeeResponses);
         });
 
       $scope.vizurl = 'http://personafusion.stage1.mybluemix.net/api/viz?fname=' + $scope.firstName.toUpperCase() + '&lname=' + $scope.lastName.toUpperCase();

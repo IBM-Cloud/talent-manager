@@ -8,6 +8,13 @@
       </div>
       <div class="modal-body">
         <div id="employeeViz"></div>
+
+        <div class="employee-responses">
+          <ul>
+            <li ng-repeat="qaResponse in selectedEmployeeResponses">{{qaResponse}}</li>
+          </ul>
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
