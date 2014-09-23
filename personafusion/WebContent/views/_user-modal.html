@@ -9,10 +9,18 @@
       <div class="modal-body">
         <div id="employeeViz"></div>
 
-        <div class="employee-responses">
-          <ul>
-            <li ng-repeat="qaResponse in selectedEmployeeResponses">{{qaResponse}}</li>
-          </ul>
+        <div class="survey-container">
+          <div class="survey-content" ng-repeat="survey in selectedEmployeeSurvey">
+
+            <div class="survey-question">
+              <b>{{survey.question}}</b>
+            </div>
+
+            <div class="survey-answer">
+              {{survey.answer}}
+            </div>
+
+          </div>
         </div>
 
       </div>

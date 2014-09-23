@@ -63,6 +63,14 @@ angular
     $rootScope.selectedEmployee = [];
     $rootScope.selectedEmployeePic = [];
     $rootScope.selectedEmployeeResponses = [];
+    $rootScope.selectedEmployeeSurvey = [];
     $rootScope.employeeViz = '';
+    $rootScope.surveyQuestions = [
+      "What is the last technical or scientific concept you learned on your own? What prompted you to learn it? How did you teach yourself?",
+      "Congratulations! After a hard-fought campaign, you are now President of the World. What is the first change that you would make?",
+      "Tell me about a time when you had to deal with a difficult person. How did you handle the situation?",
+      "How do you deal with conflict?",
+      "Would you say you are good with dealing with high-pressure or stressful situations?"
+    ];
   })
 ;

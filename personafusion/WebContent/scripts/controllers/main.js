@@ -15,6 +15,16 @@ angular.module('recruiterApp')
       $rootScope.selectedEmployeePic = picurl;
       $rootScope.selectedEmployeeResponses = qaresponses;
 
+      for (var i = 0; i < $rootScope.surveyQuestions.length; i++) {
+        $rootScope.selectedEmployeeSurvey[i] = {
+          'question': $rootScope.surveyQuestions[i],
+          'answer': $rootScope.selectedEmployeeResponses[i]
+        };
+      }
+
+      console.log('surveyQuestions:');
+      console.log($rootScope.surveyQuestions);
+
       $scope.nameArray = fullname.split(' ');
       for (var i=0; i<=$scope.nameArray.length; i++) {
         if ($scope.nameArray[i] != null) {
@@ -44,8 +54,6 @@ angular.module('recruiterApp')
 
          console.log('$rootScope.candidates retrieved from JSON:');
          console.log($rootScope.candidates);
-         console.log("QA Responses");
-         console.log($rootScope.selectedEmployeeResponses);
         });
 
       $scope.vizurl = 'http://personafusion.stage1.mybluemix.net/api/viz?fname=' + $scope.firstName.toUpperCase() + '&lname=' + $scope.lastName.toUpperCase();
