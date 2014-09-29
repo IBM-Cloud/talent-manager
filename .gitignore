@@ -1,0 +1,3 @@
+twitter4j.properties
+*.class
+src/com/ibm/personafusion/service/TwitterClient.java
