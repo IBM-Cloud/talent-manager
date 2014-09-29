@@ -10,9 +10,21 @@ angular.module('recruiterApp')
        console.log($scope.employees);
       });
 
-    $rootScope.getResults = function(fullname,picurl) {
+    $rootScope.getResults = function(fullname,picurl,qaresponses) {
       $rootScope.selectedEmployee = fullname;
       $rootScope.selectedEmployeePic = picurl;
+      $rootScope.selectedEmployeeResponses = qaresponses;
+
+      for (var i = 0; i < $rootScope.surveyQuestions.length; i++) {
+        $rootScope.selectedEmployeeSurvey[i] = {
+          'question': $rootScope.surveyQuestions[i],
+          'answer': $rootScope.selectedEmployeeResponses[i]
+        };
+      }
+
+      console.log('surveyQuestions:');
+      console.log($rootScope.surveyQuestions);
+
       $scope.nameArray = fullname.split(' ');
       for (var i=0; i<=$scope.nameArray.length; i++) {
         if ($scope.nameArray[i] != null) {

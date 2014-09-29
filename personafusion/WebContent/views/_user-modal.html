@@ -8,6 +8,21 @@
       </div>
       <div class="modal-body">
         <div id="employeeViz"></div>
+
+        <div class="survey-container">
+          <div class="survey-content" ng-repeat="survey in selectedEmployeeSurvey">
+
+            <div class="survey-question">
+              <b>{{survey.question}}</b>
+            </div>
+
+            <div class="survey-answer">
+              {{survey.answer}}
+            </div>
+
+          </div>
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
