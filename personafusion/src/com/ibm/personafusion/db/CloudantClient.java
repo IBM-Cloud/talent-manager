@@ -58,9 +58,10 @@ public class CloudantClient
 	{
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		String name = p.name.toUpperCase();
+		String group = p.group;
 		data.put(Constants.ID_KEY, name);
 		data.put(Constants.TYPE_KEY, Person.class.getName());
-		data.put(Constants.GROUP_KEY, p.group);
+		data.put(Constants.GROUP_KEY, group);
 		System.out.println(data.get(Constants.TYPE_KEY));
 		data.put(Constants.JSON_KEY, JsonUtils.getJson(p));
 		this.putItem(data);
@@ -167,6 +168,22 @@ public class CloudantClient
 					startSize, endSize));
 	}
 	
+	public void deletePerson(Person p)
+	{
+		String name = p.name.toUpperCase();
+		List<String> docIds = this.dbc.getAllDocIds();
+		int startSize = docIds.size();
+		@SuppressWarnings("unchecked")
+		HashMap<String, Object> obj = this.dbc.get(HashMap.class, name);
+		this.dbc.delete(obj);
+		docIds = this.dbc.getAllDocIds();
+		int endSize = docIds.size();
+		System.out.println(
+				String.format(
+					"Deleted entry %s. Starting size: %d. Current size: %d.",
+					name, startSize, endSize));
+	}
+	
 	/** Put a generic item modeled as Key-Value pairs into Cloudant. **/
 	private void putItem(HashMap<String, Object> data)
 	{
@@ -223,8 +240,6 @@ public class CloudantClient
 	{
 		CloudantClient cc = new CloudantClient();
 		
-		cc.deleteAll();
-		
 		Person p = new Person("Alan Xia", null, null);
 		p.group = "group1";
 		cc.putPerson(p);
@@ -248,6 +263,9 @@ public class CloudantClient
 		
 		List<Person> notg1ppl = cc.getAllPeopleNotInGroup("group1");
 		System.out.println(notg1ppl.get(0).name + " is not in group1.");
+		
+		cc.deletePerson(p);
+		cc.deletePerson(p2);
 		
 		cc.closeDBConnector();
 	}

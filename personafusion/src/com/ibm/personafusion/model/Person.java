@@ -21,12 +21,12 @@ public class Person implements Comparable<Person>
 	public List<String> qaResponses;
 	public String image_url;
 	public List<String> keyWords;
-	public String group;
 	
 	//one queryPerson for everyone
 	static Person queryPerson;
 	//different distances for everyone
 	public double distToQueryPerson;
+	public String group;
 	//one set of weights for everyone
 	static double weightTraits, weightResume, weightRole;
 	
@@ -150,6 +150,7 @@ public class Person implements Comparable<Person>
 		Collections.sort(termList);
 		for(int i=0; i<nMostFrequent; i++)
 		{
+			if (i == termList.size()) break;
 			keyWords.add(termList.get(i).word);
 		}
 		return keyWords;

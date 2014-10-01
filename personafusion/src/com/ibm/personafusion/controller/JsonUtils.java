@@ -2,6 +2,7 @@ package com.ibm.personafusion.controller;
 
 import java.util.List;
 
+import com.ibm.personafusion.model.AddPersonRequest;
 import com.ibm.personafusion.model.Person;
 import com.google.gson.Gson;
 
@@ -25,6 +26,13 @@ public class JsonUtils
 	{
 		Gson gson = new Gson();
 		Person p = gson.fromJson(json, Person.class);
+		return p;
+	}
+	
+	public static AddPersonRequest getAPRFromJson(String json)
+	{
+		Gson gson = new Gson();
+		AddPersonRequest p = gson.fromJson(json, AddPersonRequest.class);
 		return p;
 	}
 	
