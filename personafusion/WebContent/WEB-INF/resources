@@ -1,3 +1,4 @@
+com.ibm.personafusion.controller.AddController
 com.ibm.personafusion.controller.SearchController
 com.ibm.personafusion.controller.PeopleController
 com.ibm.personafusion.controller.VizController

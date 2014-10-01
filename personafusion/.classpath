@@ -23,5 +23,8 @@
 	<classpathentry kind="lib" path="dep-jar/slf4j-api-1.7.2.jar"/>
 	<classpathentry kind="lib" path="dep-jar/slf4j-jdk14-1.7.2.jar"/>
 	<classpathentry kind="lib" path="dep-jar/jackson-all-1.8.10.jar"/>
+	<classpathentry kind="lib" path="dep-jar/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="dep-jar/junit-4.11.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>
