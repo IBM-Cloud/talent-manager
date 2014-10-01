@@ -7,6 +7,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.ibm.personafusion.Config;
+import com.ibm.personafusion.Constants;
 import com.ibm.personafusion.model.AddPersonRequest;
 import com.ibm.personafusion.model.Person;
 
@@ -25,6 +26,7 @@ public class AddController
 		Person p = personFromRequest(json);
 		System.out.println(p);
 		Config.cc.putPerson(p);
+		addToGlobalList(p);
 		return Response.ok(p.toString()).header("Access-Control-Allow-Origin", "*")
 	            .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
 	            .build();
@@ -35,6 +37,19 @@ public class AddController
 		AddPersonRequest apr = JsonUtils.getAPRFromJson(json);
 		Person p = AddPersonRequest.toPerson(apr);
 		return p;
+	}
+	
+	protected static void addToGlobalList(Person p)
+	{
+		if (p == null || p.group == null) return;
+		if (p.group.equals(Constants.CURRENT_EMPLOYEES_GROUP))
+		{
+			PeopleController.people.add(p);
+		}
+		else
+		{
+			SearchController.people.add(p);
+		}
 	}
 	
 }
