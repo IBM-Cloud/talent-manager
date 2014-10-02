@@ -86,9 +86,11 @@ angular.module('recruiterApp')
           console.log('error');
         }).
         success(function(data) {
-          console.log('VIZ OBJECT HERE');
-          $rootScope.employeeViz=data;
-          $('#employeeViz').html($rootScope.employeeViz);
+          console.log('CANDIDATE VIZ OBJECT HERE');
+          $rootScope.candidateViz=data;
+
+          // not working yet
+          $('#candidate-viz').html($rootScope.candidateViz);
         });
     }
 

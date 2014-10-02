@@ -68,8 +68,8 @@ angular.module('recruiterApp')
         }).
         success(function(data) {
           console.log('VIZ OBJECT HERE');
-          $rootScope.candidateViz=data;
-          $('#candidateViz').html($rootScope.candidateViz);
+          $rootScope.employeeViz=data;
+          $('#employeeViz').html($rootScope.employeeViz);
         });
 
       $location.path( '/results' );
