@@ -17,7 +17,7 @@ import com.ibm.personafusion.model.Person;
 public class PeopleController 
 {
 	/** Return people who are current employees in the user's group. **/
-	private static List<Person> people = 
+	public static List<Person> people = 
 			Config.cc.getAllPeopleInGroup(Constants.CURRENT_EMPLOYEES_GROUP);
 	@GET
 	public Response handle()
