@@ -8,7 +8,7 @@
           <div class = "title"><img src="{{selectedEmployeePic}}" style = "height: 130px;"/></div>
           <div class="detailedTitle" style=" margin-top: 1em;">{{selectedEmployee | capitalize}}'s Skills
             <ul>
-              <li ng-repeat="skill in candidates[6].resumeInfo.techSkills | limitTo: 5">{{skill}}</li>
+              <li ng-repeat="skill in selectedEmployeeTechSkills | limitTo: 5 track by $index">{{skill}}</li>
             </ul>
             </div>
         </div>
@@ -16,7 +16,7 @@
 
           <div class="detailedTitle">{{selectedEmployee | capitalize}}'s Personality
             <ul>
-              <li ng-repeat="trait in candidates[6].traits | limitTo: 5">
+              <li ng-repeat="trait in selectedEmployeeTraits | limitTo: 5 track by $index">
                 {{trait.traitName}}: {{trait.percent}}%
                 <div class="progress" style = "margin-bottom: 3px;">
                   <div class="bar" style="width: {{trait.percent}}%; height: 100%; background-color: #0abeef;"></div>

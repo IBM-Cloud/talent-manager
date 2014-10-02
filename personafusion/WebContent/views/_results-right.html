@@ -2,7 +2,7 @@
 
     <ul class="candidate-group">
 
-      <li class="candidate-item" ng-repeat="candidate in filteredCandidates | orderBy:'distToQueryPerson':true" ng-show="candidate.visible" ng-click="toggleExpanded(candidate)">
+      <li class="candidate-item" ng-repeat="candidate in filteredCandidates | orderBy:'distToQueryPerson':true track by $index" ng-show="candidate.visible" ng-click="toggleExpanded(candidate)">
 
        <!-- Potential Candidates -->
 
@@ -30,7 +30,7 @@
             <div class="row">
               <div class="col-md-7 detailedTitle">Personality
                 <ul>
-                  <li ng-repeat="trait in candidate.traits | limitTo: 5">
+                  <li ng-repeat="trait in candidate.traits | limitTo: 5 track by $index">
                     {{trait.traitName}}: {{trait.percent}}%
                     <div class="progress" style = "margin-bottom: 3px;">
                       <div class="bar" style="width: {{trait.percent}}%; height: 100%; background-color: #0abeef;"></div>
@@ -40,22 +40,29 @@
               </div>
               <div class="col-md-4 detailedTitle">Skills
                 <ul>
-                  <li ng-repeat="skill in candidate.resumeInfo.techSkills | limitTo: 5">{{skill}}</li>
+                  <li ng-repeat="skill in candidate.resumeInfo.techSkills | limitTo: 5 track by $index">{{skill}}</li>
                 </ul>
                 <div style = "margin-top: 20px;">
                   Past Employers
                 </div>
                 <ul>
-                  <li ng-repeat="trait in candidate.resumeInfo.pastEmployers | limitTo: 5">{{trait}}</li>
+                  <li ng-repeat="trait in candidate.resumeInfo.pastEmployers | limitTo: 5 track by $index">{{trait}}</li>
                 </ul>
               </div>
             </div>
             <div class="row">
-              <div class="detailedTitle col-md-12">Keywords from Twitter
+              <div class="detailedTitle col-md-10">Keywords from Twitter
                 <ul>
-                  <li ng-repeat="keyword in candidate.keyWords | limitTo: 5">{{keyword}}</li>
+                  <li ng-repeat="keyword in candidate.keyWords track by $index| limitTo: 5">{{keyword}}</li>
                 </ul>
               </div>
+
+              <div class="col-md-2">
+                <button class="btn btn-default btn-lg more-button" data-toggle="modal" data-target="#candidate-visualization-modal" style="border: 1px solid #0abeef; border-radius: 0px; padding: 5px 20px; color: #0abeef;">
+                  More
+                </button>
+              </div>
+
             </div>
           </div>
 

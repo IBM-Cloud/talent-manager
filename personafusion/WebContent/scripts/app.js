@@ -57,6 +57,32 @@ angular
         return $filter('number')(input*1, decimals)+'%';
     };
   }])
+  .directive('newCandidateModal', function() {
+    return {
+      restrict: 'E',
+      scope: true,
+      templateUrl: 'views/_new-candidate-modal.html',
+      controller: 'NewCandidateCtrl'
+    };
+  })
+  .directive('capitalize', function() {
+     return {
+       require: 'ngModel',
+       link: function(scope, element, attrs, modelCtrl) {
+          var capitalize = function(inputValue) {
+             if(inputValue == undefined) inputValue = '';
+             var capitalized = inputValue.toUpperCase();
+             if(capitalized !== inputValue) {
+                modelCtrl.$setViewValue(capitalized);
+                modelCtrl.$render();
+              }
+              return capitalized;
+           }
+           modelCtrl.$parsers.push(capitalize);
+           capitalize(scope[attrs.ngModel]);  // capitalize initial value
+       }
+     };
+  })
   .run(function($rootScope, $location, $http) {
     $rootScope.candidates = [];
     $rootScope.filteredCandidates = [];
@@ -64,6 +90,8 @@ angular
     $rootScope.selectedEmployeePic = [];
     $rootScope.selectedEmployeeResponses = [];
     $rootScope.selectedEmployeeSurvey = [];
+    $rootScope.selectedEmployeeTechSkills = [];
+    $rootScope.selectedEmployeeTraits = [];
     $rootScope.employeeViz = '';
     $rootScope.surveyQuestions = [
       "What is the last technical or scientific concept you learned on your own? What prompted you to learn it? How did you teach yourself?",

@@ -10,10 +10,13 @@ angular.module('recruiterApp')
        console.log($scope.employees);
       });
 
-    $rootScope.getResults = function(fullname,picurl,qaresponses) {
+    $rootScope.getResults = function(fullname, picurl, qaresponses, techskills, traits) {
       $rootScope.selectedEmployee = fullname;
       $rootScope.selectedEmployeePic = picurl;
       $rootScope.selectedEmployeeResponses = qaresponses;
+      $rootScope.selectedEmployeeTechSkills = techskills;
+      console.log('SelectedTechSkills', $rootScope.selectedEmployeeTechSkills);
+      $rootScope.selectedEmployeeTraits = traits;
 
       for (var i = 0; i < $rootScope.surveyQuestions.length; i++) {
         $rootScope.selectedEmployeeSurvey[i] = {

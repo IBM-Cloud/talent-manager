@@ -28,7 +28,7 @@
             <li>
               <img src = "images/search.png" class = "navIMG" id = "searchIMG">
             </li>
-            <li data-toggle = "modal" data-target = "#canModal">
+            <li data-toggle = "modal" data-target = "#new-candidate-modal">
               <img src = "images/collection.png" class = "navIMG">
             </li>
             <li>
@@ -45,71 +45,7 @@
 
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="canModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Application Questionnair</h4>
-          </div>
-          <div class="modal-body">
-            <div>
-              <h5>
-                Name
-              </h5>
-              <div>
-                <input class = "name" type = "text" placeholder = "First Name" ng-model="newUser.firstname">
-                <input class = "name" type = "text" placeholder = "Last Name" ng-model="newUser.lastname">   
-              </div>
-            </div>
-            <div>
-              <h5>
-                Application Info      
-              </h5>
-              <div>
-                <input class = "name" type = "text" placeholder = "Role" ng-model="newUser.role">
-                <input class = "name" type = "text" placeholder = "image URL" ng-model="newUser.imageUrl">      
-              </div>
-            </div>
-            <div>
-              <h5>
-                Tech Skills
-              </h5>
-              <div>
-                <input class = "name" type = "text" placeholder = "Skill1" ng-model="newUser.resumeInfo.techSkills[0]">
-                <input class = "name" type = "text" placeholder = "Skill2" ng-model="newUser.resumeInfo.techSkills[1]">
-                <input class = "name" type = "text" placeholder = "Skill3" ng-model="newUser.resumeInfo.techSkills[2]">        
-              </div>
-            </div>
-            <div>
-              <h5>
-                Past Employers
-              </h5>
-              <div>
-                <input class = "name" type = "text" placeholder = "Employer1" ng-model="newUser.resumeInfo.pastEmployers[0]">
-                <input class = "name" type = "text" placeholder = "Employer2" ng-model="newUser.resumeInfo.pastEmployers[1]">
-                <input class = "name" type = "text" placeholder = "Employer3" ng-model="newUser.resumeInfo.pastEmployers[2]">    
-              </div>
-            </div>
-            <h5>What is the latest technical or scientific concept you learned on your own? What prompted you to learn it? How did you teach yourself?</h5>
-            <textarea class = "name" style = "width: 100%" ng-model="newUser.responses[0]"></textarea>
-            <h5>Congratulations! After a hard-fought campaign, you are now President of the World. What is the first change that you would make?</h5>
-            <textarea class = "name" style = "width: 100%" ng-model="newUser.responses[1]"></textarea>
-            <h5>Tell me about a time when you had to deal with a difficult person. How did you handle the situation?</h5>
-            <textarea class = "name" style = "width: 100%" ng-model="newUser.responses[2]"></textarea>
-            <h5>How do you deal with conflict?</h5>
-            <textarea class = "name" style = "width: 100%" ng-model="newUser.responses[3]"></textarea>
-            <h5>Would you say you are good with dealing with high-pressure or stressful situations?</h5>
-            <textarea class = "name" style = "width: 100%" ng-model="newUser.responses[4]"></textarea>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <new-candidate-modal></new-candidate-modal>
 
     <script src="vendor/scripts/jquery.min.js"></script>
     <script src="vendor/scripts/bootstrap.min.js"></script>
@@ -122,6 +58,7 @@
     <script src="vendor/scripts/angular-cookies.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/new-candidate.js"></script>
     <script src="scripts/controllers/results.js"></script>
     <script src="scripts/controllers/about.js"></script>
 
