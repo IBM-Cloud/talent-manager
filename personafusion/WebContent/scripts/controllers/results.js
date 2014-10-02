@@ -54,6 +54,44 @@ angular.module('recruiterApp')
       // console.log($rootScope.filteredCandidates);
     };
 
+    $scope.getCandidateDetails = function(candidate) {
+      console.log('Getting candidate viz and responses...');
+      console.log(candidate);
+
+      $scope.candidateNameArray = candidate.name.split(' ');
+      for (var i=0; i<=$scope.candidateNameArray.length; i++) {
+        if ($scope.candidateNameArray[i] != null) {
+          $scope.candidateNameArray[i] = $scope.candidateNameArray[i].toLowerCase();
+          $scope.candidateNameArray[i] = $scope.candidateNameArray[i].substring(0,1).toUpperCase() +
+            $scope.candidateNameArray[i].substring(1);
+        }
+      }
+      $scope.candidateFirstName = $scope.candidateNameArray[0];
+      $scope.candidateLastName = $scope.candidateNameArray[1];
+      $scope.candidateFullName = $scope.candidateNameArray.join(' ');
+      console.log($scope.candidateFullName);
+
+      for (var i = 0; i < $rootScope.surveyQuestions.length; i++) {
+        $rootScope.selectedCandidateSurvey[i] = {
+          'question': $rootScope.surveyQuestions[i],
+          'answer': candidate.qaResponses[i]
+        };
+      }
+
+      $scope.candvizurl = 'http://personafusion.stage1.mybluemix.net/api/viz?fname=' + $scope.candidateFirstName.toUpperCase() + '&lname=' + $scope.candidateLastName.toUpperCase();
+      console.log($scope.candvizurl);
+      $http.get($scope.candvizurl).
+        error(function(data) {
+          console.log(data);
+          console.log('error');
+        }).
+        success(function(data) {
+          console.log('VIZ OBJECT HERE');
+          $rootScope.employeeViz=data;
+          $('#employeeViz').html($rootScope.employeeViz);
+        });
+    }
+
     // TAGS STUFFS
     $(document).ready( function() {
       $("#tag-typer").keypress( function(event) {
@@ -111,6 +149,12 @@ angular.module('recruiterApp')
     return {
       restrict: 'E',
       templateUrl: 'views/_user-modal.html'
+    };
+  })
+  .directive('candidateModal', function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'views/_candidate-modal.html'
     };
   })
   ;

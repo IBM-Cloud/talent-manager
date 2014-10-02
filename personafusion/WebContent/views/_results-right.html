@@ -46,23 +46,21 @@
                   Past Employers
                 </div>
                 <ul>
-                  <li ng-repeat="trait in candidate.resumeInfo.pastEmployers | limitTo: 5 track by $index">{{trait}}</li>
+                  <li ng-repeat="employer in candidate.resumeInfo.pastEmployers | limitTo: 5 track by $index">{{employer}}</li>
                 </ul>
+                <div style = "margin-top: 20px;">
+                  <button class="btn btn-default btn-lg more-button" data-toggle="modal" data-target="#candidate-modal" style="border: 1px solid #0abeef; border-radius: 0px; padding: 5px 20px; color: #0abeef;" ng-click="getCandidateDetails(candidate);">
+                    More
+                  </button>
+                </div>
               </div>
             </div>
             <div class="row">
-              <div class="detailedTitle col-md-10">Keywords from Twitter
+              <div class="detailedTitle col-md-8">Keywords from Twitter
                 <ul>
                   <li ng-repeat="keyword in candidate.keyWords track by $index| limitTo: 5">{{keyword}}</li>
                 </ul>
               </div>
-
-              <div class="col-md-2">
-                <button class="btn btn-default btn-lg more-button" data-toggle="modal" data-target="#candidate-visualization-modal" style="border: 1px solid #0abeef; border-radius: 0px; padding: 5px 20px; color: #0abeef;">
-                  More
-                </button>
-              </div>
-
             </div>
           </div>
 

@@ -90,9 +90,11 @@ angular
     $rootScope.selectedEmployeePic = [];
     $rootScope.selectedEmployeeResponses = [];
     $rootScope.selectedEmployeeSurvey = [];
+    $rootScope.selectedCandidateSurvey = [];
     $rootScope.selectedEmployeeTechSkills = [];
     $rootScope.selectedEmployeeTraits = [];
     $rootScope.employeeViz = '';
+    $rootScope.candidateViz = '';
     $rootScope.surveyQuestions = [
       "What is the last technical or scientific concept you learned on your own? What prompted you to learn it? How did you teach yourself?",
       "Congratulations! After a hard-fought campaign, you are now President of the World. What is the first change that you would make?",
