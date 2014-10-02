@@ -236,6 +236,32 @@ body {
   text-align: center;
 }
 
+.name{
+  margin-right: 2em;
+  border: 1px solid #8f8f8f;
+}
+
+.name::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #aaaaaa;
+    font-size: 12px;
+    padding: 6px;
+}
+.name:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #aaaaaa;
+    font-size: 12px;
+    padding: 6px;
+}
+.name::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #aaaaaa;
+    font-size: 12px;
+    padding: 6px;
+}
+.name:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #aaaaaa;
+    font-size: 12px;
+    padding: 6px;
+}
+
 div.btn:hover {
   color: #fff;
 }
