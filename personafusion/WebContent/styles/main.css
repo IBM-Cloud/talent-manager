@@ -1,0 +1,267 @@
+.mainInput::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #fff;
+    font-size: 16px;
+    opacity: 0.6;
+}
+.mainInput:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #fff;
+    opacity: 0.6;
+    font-size: 16px;
+}
+.mainInput::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #fff;
+    opacity: 0.6;
+    font-size: 16px;
+}
+.mainInput:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #fff;
+    font-size: 16px;
+    opacity: 0.6;
+}
+
+.person-box {
+  display: block;
+  float: left;
+  width: 25%;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 3em;
+}
+
+.person-img img {
+  border: 5px solid #fff;
+  border-radius: 5px;
+/*  height:180px;
+  width: 180px;*/
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  background: pink;
+}
+
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  /* Make the masthead heading the same height as the navigation */
+}
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+/* Eva */
+#body {
+  background-color: #0ABEEF;
+}
+
+.nav-default {
+  background-color: #fff!important;
+  border-color: #fff!important;
+}
+
+#hotPot_header {
+  color: #0ABEEF;
+  margin-left: 1em;
+  font-size: 22px;
+}
+
+#profileIMG {
+  width: 35px;
+  margin-right: 3em;
+  margin-top: 8px;
+}
+
+.navIMG {
+  width: 23px;
+  margin-top: 14px;
+  margin-right: 2em;
+}
+
+#searchIMG {
+  margin-top: 20px;
+}
+
+#question {
+  margin: 10em auto;
+  width: 55%;
+  color: #fff;
+  margin-bottom: 3em;
+}
+
+#inputRole {
+  background-color: transparent;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  width: 200px;
+  outline: none;
+  text-align: center;
+}
+
+#inputName {
+  background-color: transparent;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  width: 175px;
+  outline: none;
+  text-align: center;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #fff;
+  opacity: 0.5;
+  font-size: 18px;
+}
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #fff;
+  opacity: 0.5;
+  font-size: 18px;
+}
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #fff;
+  opacity: 0.5;
+  font-size: 18px;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #fff;
+  opacity: 0.5;
+  font-size: 18px;
+}
+
+#profileTile {
+  margin: 0 auto;
+  width: 65%;
+  color: #fff;
+  /*height: 235px;*/
+  height: 530px;
+  overflow: hidden;
+}
+
+.hotPotBtn {
+  padding: 3px 40px;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 18px;
+  float: right;
+}
+
+#btnDiv {
+  padding-top: 3em;
+  margin: 0 auto;
+  width: 65%;
+  padding-right: 23px;
+}
+
+.lead {
+  text-align: center;
+}
+
+.new-candidate{
+  margin-right: 2em;
+  border: 1px solid #8f8f8f;
+}
+
+.new-candidate::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #aaaaaa;
+    font-size: 12px;
+    padding: 6px;
+}
+.new-candidate:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #aaaaaa;
+    font-size: 12px;
+    padding: 6px;
+}
+.new-candidate::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #aaaaaa;
+    font-size: 12px;
+    padding: 6px;
+}
+.new-candidate:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #aaaaaa;
+    font-size: 12px;
+    padding: 6px;
+}
+
+div.btn:hover {
+  color: #fff;
+}

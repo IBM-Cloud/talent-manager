@@ -1,0 +1,66 @@
+<!-- Modal -->
+<div class="modal fade" id="new-candidate-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Application Questionnaire</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+          <h5>
+            Name
+          </h5>
+          <div>
+            <input class = "new-candidate" type = "text" placeholder = "First Name" ng-model="newUser.firstName" capitalize>
+            <input class = "new-candidate" type = "text" placeholder = "Last Name" ng-model="newUser.lastName" capitalize>
+          </div>
+        </div>
+        <div>
+          <h5>
+            Application Info
+          </h5>
+          <div>
+            <input class = "new-candidate" type = "text" placeholder = "Role (DEV/MANAGER)" ng-model="newUser.role" capitalize>
+            <input class = "new-candidate" type = "text" placeholder = "Profile Image URL" ng-model="newUser.imageUrl">
+          </div>
+        </div>
+        <div>
+          <h5>
+            Tech Skills
+          </h5>
+          <div>
+            <input class = "new-candidate" type = "text" placeholder = "Skill1" ng-model="newUser.resumeInfo.techSkills[0]">
+            <input class = "new-candidate" type = "text" placeholder = "Skill2" ng-model="newUser.resumeInfo.techSkills[1]">
+            <input class = "new-candidate" type = "text" placeholder = "Skill3" ng-model="newUser.resumeInfo.techSkills[2]">
+          </div>
+        </div>
+        <div>
+          <h5>
+            Past Employers
+          </h5>
+          <div>
+            <input class = "new-candidate" type = "text" placeholder = "Employer1" ng-model="newUser.resumeInfo.pastEmployers[0]">
+            <input class = "new-candidate" type = "text" placeholder = "Employer2" ng-model="newUser.resumeInfo.pastEmployers[1]">
+            <input class = "new-candidate" type = "text" placeholder = "Employer3" ng-model="newUser.resumeInfo.pastEmployers[2]">
+          </div>
+        </div>
+        <h5>What is the latest technical or scientific concept you learned on your own? What prompted you to learn it? How did you teach yourself?</h5>
+        <textarea class = "new-candidate" style = "width: 100%" ng-model="newUser.responses[0]"></textarea>
+        <h5>Congratulations! After a hard-fought campaign, you are now President of the World. What is the first change that you would make?</h5>
+        <textarea class = "new-candidate" style = "width: 100%" ng-model="newUser.responses[1]"></textarea>
+        <h5>Tell me about a time when you had to deal with a difficult person. How did you handle the situation?</h5>
+        <textarea class = "new-candidate" style = "width: 100%" ng-model="newUser.responses[2]"></textarea>
+        <h5>How do you deal with conflict?</h5>
+        <textarea class = "new-candidate" style = "width: 100%" ng-model="newUser.responses[3]"></textarea>
+        <h5>Would you say you are good with dealing with high-pressure or stressful situations?</h5>
+        <textarea class = "new-candidate" style = "width: 100%" ng-model="newUser.responses[4]"></textarea>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addCandidate();">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="vendor/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/_results.css">
+    <link rel="stylesheet" href="styles/_results_right.css">
+
+
+  </head>
+  <body ng-app="recruiterApp" id = "body">
+
+
+    <!-- Add your site or application content here -->
+    <div class="index-container">
+      <nav class = "navbar navbar-default navbar-fixed-top" role = "navigation">
+        <div class = "container-fluid">
+          <div class = "navbar-header">
+            <a id ="hotPot_header" class = "navbar-brand" href = "#">Talent Manager</a>
+          </div>
+
+          <ul class = "nav navbar-nav navbar-right">
+            <li>
+              <img src = "images/search.png" class = "navIMG" id = "searchIMG">
+            </li>
+            <li data-toggle = "modal" data-target = "#new-candidate-modal">
+              <img src = "images/collection.png" class = "navIMG">
+            </li>
+            <li>
+              <img src = "images/help.png" class = "navIMG">
+            </li>
+            <li>
+              <img src = "images/eva.png" id = "profileIMG">
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div ng-view=""></div>
+
+    </div>
+
+    <new-candidate-modal></new-candidate-modal>
+
+    <script src="vendor/scripts/jquery.min.js"></script>
+    <script src="vendor/scripts/bootstrap.min.js"></script>
+    <script src="vendor/scripts/angular.min.js"></script>
+    <script src="vendor/scripts/angular-resource.js"></script>
+    <script src="vendor/scripts/angular-sanitize.min.js"></script>
+    <script src="vendor/scripts/angular-animate.min.js"></script>
+    <script src="vendor/scripts/angular-touch.min.js"></script>
+    <script src="vendor/scripts/angular-route.min.js"></script>
+    <script src="vendor/scripts/angular-cookies.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/new-candidate.js"></script>
+    <script src="scripts/controllers/results.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<div class="results">
+  <div class="results-persona col-md-6" style = "padding-right: 0px;">
+
+    <div class="persona-title">{{selectedEmployee | capitalize}}'s Profile</div>
+    <div class="persona-top skill">
+      <div class="row">
+        <div class="col-md-6">
+          <div class = "title"><img src="{{selectedEmployeePic}}" style = "height: 130px;"/></div>
+          <div class="detailedTitle" style=" margin-top: 1em;">{{selectedEmployee | capitalize}}'s Skills
+            <ul>
+              <li ng-repeat="skill in selectedEmployeeTechSkills | limitTo: 5 track by $index">{{skill}}</li>
+            </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+          <div class="detailedTitle">{{selectedEmployee | capitalize}}'s Personality
+            <ul>
+              <li ng-repeat="trait in selectedEmployeeTraits | limitTo: 5 track by $index">
+                {{trait.traitName}}: {{trait.percent}}%
+                <div class="progress" style = "margin-bottom: 3px;">
+                  <div class="bar" style="width: {{trait.percent}}%; height: 100%; background-color: #0abeef;"></div>
+                </div>
+              </li>
+            </ul>
+          <!-- Button trigger modal -->
+          <button class="btn btn-default btn-lg more-button" data-toggle="modal" data-target="#myModal" style="border: 1px solid #0abeef; border-radius: 0px; padding: 5px 20px; color: #0abeef;">
+            More
+          </button>
+          </div>
+
+
+        </div>
+
+        <user-modal></user-modal>
+        <candidate-modal></candidate-modal>
+
+      </div>
+    </div>
+
+    <div class="persona-title1">Skills you are looking for in candidates:</div>
+    <div class="persona-top1 skill">
+      <div class = "skillWord">
+        <label for="tag-typer">
+          <div id="tags">
+            <input id="tag-typer" class = "addBtn" type="text" placeholder="Add Skills"/>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="results-candidates col-md-6" style = "padding-left: 0px;">
+    <results-right></results-right>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

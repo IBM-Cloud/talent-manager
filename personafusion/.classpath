@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.cloudfoundry.appcloudserver.classPathProvider/Cloud Foundry (Runtime) v1.0"/>
+	<classpathentry kind="lib" path="dep-jar/com.ibm.ws.javaee.jaxrs.1.1_1.0.1.jar"/>
+	<classpathentry kind="lib" path="dep-jar/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="dep-jar/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="dep-jar/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="lib" path="dep-jar/fluent-hc-4.3.4.jar"/>
+	<classpathentry kind="lib" path="dep-jar/httpclient-4.3.4.jar"/>
+	<classpathentry kind="lib" path="dep-jar/httpclient-cache-4.3.4.jar"/>
+	<classpathentry kind="lib" path="dep-jar/httpcore-4.3.2.jar"/>
+	<classpathentry kind="lib" path="dep-jar/httpmime-4.3.4.jar"/>
+	<classpathentry kind="lib" path="dep-jar/JSON4J.jar"/>
+	<classpathentry kind="lib" path="dep-jar/twitter4j-core-4.0.2.jar"/>
+	<classpathentry kind="lib" path="dep-jar/gson-2.3.jar"/>
+	<classpathentry kind="lib" path="dep-jar/org.ektorp-1.2.2.jar"/>
+	<classpathentry kind="lib" path="dep-jar/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="dep-jar/log4j-over-slf4j-1.7.2.jar"/>
+	<classpathentry kind="lib" path="dep-jar/slf4j-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="dep-jar/slf4j-jdk14-1.7.2.jar"/>
+	<classpathentry kind="lib" path="dep-jar/jackson-all-1.8.10.jar"/>
+	<classpathentry kind="lib" path="dep-jar/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="dep-jar/junit-4.11.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
+</classpath>
