@@ -22,7 +22,7 @@ angular.module('recruiterApp')
       // console.log('STRING', $scope.newUserString);
 
       $http({
-        url: "http://personafusion.stage1.mybluemix.net/api/add",
+        url: "/api/add",
         // dataType: "json",
         method: "POST",
         data: $scope.newUser,

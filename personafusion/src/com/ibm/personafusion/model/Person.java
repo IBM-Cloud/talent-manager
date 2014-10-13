@@ -1,6 +1,5 @@
 package com.ibm.personafusion.model;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -72,6 +71,10 @@ public class Person implements Comparable<Person>
 		pString = traits.toString();
 		//pString = this.name + " , " + this.distToQueryPerson;
 		return pString;
+	}
+	
+	public List<FollowUp> getFollowUp() {
+		return Collections.singletonList(new FollowUp(name, image_url, role));
 	}
 	
 	public void setDistanceWeights(double weightTraits, double weightResume, double weightRole)

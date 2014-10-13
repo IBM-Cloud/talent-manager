@@ -9,7 +9,7 @@ angular.module('recruiterApp')
     // });
 
     // $http.get('db/candidates.json').
-    // $http.get('http://personafusion.stage1.mybluemix.net/api/search?fname=EMORY&lname=WREN').
+    // $http.get('/api/search?fname=EMORY&lname=WREN').
     //   error(function(data) {
     //     console.log(data);
     //     console.log('error');
@@ -53,6 +53,28 @@ angular.module('recruiterApp')
       // console.log('Updated List:');
       // console.log($rootScope.filteredCandidates);
     };
+    
+    $scope.followUpCandidate = function(candidate) {
+        console.log('Adding Candidate...');
+
+        console.log('Following up on canidate', candidate);
+
+        $http({
+          url: "/api/followup",
+          method: "POST",
+          data: candidate,
+          headers: {
+        	  "Content-Type": "text/plain"
+          }
+        }).success(function(response){
+            console.log('SUCCESS:', response);
+            alert("Added an action to follow up with " + candidate.name);
+        }).error(function(error){
+            console.log('ERROR:', error);
+            alert("Added an action to follow up with " + candidate.name);
+        });
+
+      };
 
     $scope.getCandidateDetails = function(candidate) {
       console.log('Getting candidate viz and responses...');
@@ -78,7 +100,7 @@ angular.module('recruiterApp')
         };
       }
 
-      $scope.candvizurl = 'http://personafusion.stage1.mybluemix.net/api/viz?fname=' + $scope.candidateFirstName.toUpperCase() + '&lname=' + $scope.candidateLastName.toUpperCase();
+      $scope.candvizurl = '/api/viz?fname=' + $scope.candidateFirstName.toUpperCase() + '&lname=' + $scope.candidateLastName.toUpperCase();
       console.log($scope.candvizurl);
       $http.get($scope.candvizurl).
         error(function(data) {

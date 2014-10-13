@@ -4,7 +4,7 @@ angular.module('recruiterApp')
   .controller('MainCtrl', function ($scope, $http, $rootScope, $location) {
 
     // $http.get('/db/employees.json' ).
-    $http.get('http://personafusion.stage1.mybluemix.net/api/people' ).
+    $http.get('/api/people' ).
       success(function(data) {
        $scope.employees = data;
        console.log($scope.employees);
@@ -38,7 +38,7 @@ angular.module('recruiterApp')
       $scope.firstName = $scope.nameArray[0];
       $scope.lastName = $scope.nameArray[1];
       $rootScope.selectedEmployee = $scope.firstName + ' ' + $scope.lastName
-      $scope.url = 'http://personafusion.stage1.mybluemix.net/api/search?fname=' + $scope.firstName.toUpperCase() + '&lname=' + $scope.lastName.toUpperCase();
+      $scope.url = '/api/search?fname=' + $scope.firstName.toUpperCase() + '&lname=' + $scope.lastName.toUpperCase();
       console.log($scope.url);
       $http.get($scope.url).
         error(function(data) {
@@ -59,7 +59,7 @@ angular.module('recruiterApp')
          console.log($rootScope.candidates);
         });
 
-      $scope.vizurl = 'http://personafusion.stage1.mybluemix.net/api/viz?fname=' + $scope.firstName.toUpperCase() + '&lname=' + $scope.lastName.toUpperCase();
+      $scope.vizurl = '/api/viz?fname=' + $scope.firstName.toUpperCase() + '&lname=' + $scope.lastName.toUpperCase();
       console.log($scope.vizurl);
       $http.get($scope.vizurl).
         error(function(data) {

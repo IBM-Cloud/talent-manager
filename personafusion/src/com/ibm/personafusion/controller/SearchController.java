@@ -23,8 +23,7 @@ import com.ibm.personafusion.model.Person;
 public class SearchController 
 {
 	/** Search for people who aren't current employees in the user's group. **/
-	public static List<Person> people = 
-			Config.cc.getAllPeopleNotInGroup(Constants.CURRENT_EMPLOYEES_GROUP);
+	public static List<Person> people = Config.cc.getAllPeopleNotInGroup(Constants.CURRENT_EMPLOYEES_GROUP);
 	
 	/** Returns search results as a JSON string. **/
 	@GET

@@ -1,5 +1,6 @@
 package com.ibm.personafusion.db;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,8 @@ import org.ektorp.http.StdHttpClient;
 import org.ektorp.impl.StdCouchDbConnector;
 import org.ektorp.impl.StdCouchDbInstance;
 
+import com.ibm.json.java.JSONArray;
+import com.ibm.json.java.JSONObject;
 import com.ibm.personafusion.Config;
 import com.ibm.personafusion.Constants;
 import com.ibm.personafusion.controller.JsonUtils;
@@ -32,15 +35,29 @@ public class CloudantClient
 	private String username;
 	private String password;
 	
-	
+	private JSONArray cloudant;
+    private JSONObject cloudantInstance;
+    private JSONObject cloudantCredentials;
 	
 	public CloudantClient()
 	{
 		this.httpClient = null;
+
+		 try {
+            String VCAP_SERVICES = System.getenv("VCAP_SERVICES");
+            JSONObject vcap;
+            vcap = (JSONObject) JSONObject.parse(VCAP_SERVICES);
+            
+            cloudant = (JSONArray) vcap.get("cloudantNoSQLDB");
+            cloudantInstance = (JSONObject) cloudant.get(0);
+            cloudantCredentials = (JSONObject) cloudantInstance.get("credentials");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 		this.port = Config.CLOUDANT_PORT;
-		this.host = Config.CLOUDANT_HOST;
-		this.username = Config.CLOUDANT_USERNAME;
-		this.password = Config.CLOUDANT_PASSWORD;
+		this.host = (String) cloudantCredentials.get("host");
+		this.username = (String) cloudantCredentials.get("username");
+		this.password = (String) cloudantCredentials.get("password");
 		this.name = Config.CLOUDANT_NAME;
 		this.dbc = this.createDBConnector();
 	}
@@ -212,6 +229,7 @@ public class CloudantClient
 		CouchDbInstance dbInstance = null;
 		
 		System.out.println("Creating CouchDB instance...");
+		System.out.println(this.username);
 		this.httpClient = new StdHttpClient.Builder()
 		.host(this.host)
 		.port(this.port)
