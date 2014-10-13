@@ -1,0 +1,21 @@
+<!-- <div class="jumbotron"> -->
+<div>
+	<div id = "question">
+	 	<p class="lead">
+	    	I need another
+	    	<input class = "mainInput" id = "inputRole" placeholder = "e.g. Dev or Manager" type="text" ng-model="search.role" value="" />
+	    	like
+	    	<input class = "mainInput" id = "inputName" placeholder = "e.g. Emory Wren" type="text" ng-model="search.name" />
+	  	</p>
+	</div>
+
+	<div id = "profileTile" ng-show="search.role">
+    	<div class="person-box" ng-repeat="employee in employees | filter:search:strict">
+  	  	<a ng-click="getResults(employee.name, employee.image_url, employee.qaResponses, employee.resumeInfo.techSkills, employee.traits)"><div class="person-img">
+          <img src="{{employee.image_url}}" height="180" width="180"/>
+        </div></a>
+  	  	<div class="person-name">{{employee.name | capitalize}}</div>
+  	  	<div class="person-role">{{employee.role | capitalize}}</div>
+  	  </div>
+	</div>
+</div>
