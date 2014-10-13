@@ -33,28 +33,14 @@ public class WatsonUserModeller
 	private String profile_api;
 	private String visual_api;
 	
-	private static JSONArray watson;
-    private static JSONObject watsonInstance;
-    private static JSONObject watsonCredentials;
-	
 	private Executor executor;
 	
 	public WatsonUserModeller()
 	{
-		try {
-            String VCAP_SERVICES = System.getenv("VCAP_SERVICES");
-            JSONObject vcap;
-            vcap = (JSONObject) JSONObject.parse(VCAP_SERVICES);
-            
-          watson = (JSONArray) vcap.get("user_modeling");
-          watsonInstance = (JSONObject) watson.get(0);
-          watsonCredentials = (JSONObject) watsonInstance.get("credentials");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-		this.username = (String) watsonCredentials.get("username");
-		this.password = (String) watsonCredentials.get("password");
-		this.base_url = (String) watsonCredentials.get("url");
+		//TODO read env VCAP_SERVICES and parse it into JSON
+		this.username = "";
+		this.password = "";
+		this.base_url = "";
 		this.profile_api = Config.WATSON_PROF_API;
 		this.visual_api = Config.WATSON_VIZ_API;
 		this.executor = Executor.newInstance().auth(username, password);
