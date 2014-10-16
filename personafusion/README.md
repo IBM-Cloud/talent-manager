@@ -1,17 +1,5 @@
 # Persona Fusion aka Talent Hotspot
 
-project URL: http://personafusion.stage1.mybluemix.net/
-
-GitLabs Repo: https://git.design.ibm.com/swelleck/persona_fusion/tree/master/personafusion
-
-API Endpoints: 
-* Search: api/search
-..* http://personafusion.stage1.mybluemix.net/api/search?fname=Emory&lname=Wren
-* Visualize: /api/viz
-..* http://personafusion.stage1.mybluemix.net/api/viz?fname=Emory&lname=Wren
-* List all People: /api/people
-..* http://personafusion.stage1.mybluemix.net/api/people
-
 # About
 ## Meet Ivy
 * She's a talent manager at a growing tech startup. 
@@ -49,7 +37,9 @@ User Modeling API
 * Angular.js
 * external file manager for reading text files
 
-## More info
-There's more information here at our w3 communities page. 
-Let us know in the comments or on our repo page if you have any other questions or curiousities. 
-https://w3-connections.ibm.com/wikis/home?lang=en#!/wiki/Wccfe9fbe4af8_4fbc_84ab_d3971c0793dd/page/Persona%20Fusion%20-%20Project%20Wiki
+## Pre-req's
+* [Install the Eclipse EE](https://ibm.biz/hackathon-eclipse).
+* [Install Java 1.7 JDK](https://ibm.biz/hackathon-java).
+* [Install the cf command-line tool](https://ibm.biz/hackathon-cf).
+* [Sign up for an IBM Bluemix account](http://bluemix.net).
+
