@@ -4,13 +4,13 @@ declared-services:
     label: cloudantNoSQLDB
     plan: shared
   personality-insights-talent-manager:
-    label: personality_insights
-    plan: "IBM Watson Personality Insights Monthly Plan"
+    label: "IBM Watson Personality Insights Monthly Plan"
+    plan: Monthly
 applications:
 - disk_quota: 1024M
   host: talent-manager
   name: talent-manager
-  path: output/webStarterApp.war
+  path: ./webStarterApp.war
   instances: 1
   memory: 512M
   services:
