@@ -10,7 +10,7 @@ applications:
 - disk_quota: 1024M
   host: talent-manager
   name: talent-manager
-  path: ./webStarterApp.war
+  path: output/webStarterApp.war
   instances: 1
   memory: 512M
   services:
