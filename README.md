@@ -5,6 +5,7 @@ To Use
 
 ```
 cf create-service cloudantNoSQLDB Shared talant-manager-db
+cf create-service "IBM Watson Personality Insights Monthly Plan" 
 cf push myappname
 ```
 
