@@ -43,3 +43,17 @@ User Modeling API
 * [Install the cf command-line tool](https://ibm.biz/hackathon-cf).
 * [Sign up for an IBM Bluemix account](http://bluemix.net).
 
+To Use
+================================================================================
+
+```
+cf create-service cloudantNoSQLDB Shared talant-manager-db
+cf push myappname
+```
+
+Replace myapp name with the name of your app (ex. talent-manager)
+
+or click the button below
+
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://github.com/jsloyer/talent-manager-complete.git)
+

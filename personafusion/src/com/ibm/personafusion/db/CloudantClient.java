@@ -35,15 +35,29 @@ public class CloudantClient
 	private String username;
 	private String password;
 	
+	private JSONArray cloudant;
+    private JSONObject cloudantInstance;
+    private JSONObject cloudantCredentials;
+	
 	public CloudantClient()
 	{
 		this.httpClient = null;
 
-		//TODO read env VCAP_SERVICES and parse it into JSON
+		 try {
+            String VCAP_SERVICES = System.getenv("VCAP_SERVICES");
+            JSONObject vcap;
+            vcap = (JSONObject) JSONObject.parse(VCAP_SERVICES);
+            
+            cloudant = (JSONArray) vcap.get("cloudantNoSQLDB");
+            cloudantInstance = (JSONObject) cloudant.get(0);
+            cloudantCredentials = (JSONObject) cloudantInstance.get("credentials");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 		this.port = Config.CLOUDANT_PORT;
-		this.host = "";
-		this.username = "";
-		this.password = "";
+		this.host = (String) cloudantCredentials.get("host");
+		this.username = (String) cloudantCredentials.get("username");
+		this.password = (String) cloudantCredentials.get("password");
 		this.name = Config.CLOUDANT_NAME;
 		this.dbc = this.createDBConnector();
 	}
