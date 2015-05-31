@@ -1,6 +1,6 @@
 ---
 declared-services:
-  talant-manager-db:
+  talent-manager-db:
     label: cloudantNoSQLDB
     plan: shared
   personality-insights-talent-manager:
@@ -10,7 +10,7 @@ applications:
 - disk_quota: 1024M
   host: talent-manager
   name: talent-manager
-  path: output/webStarterApp.war
+  path: ./webStarterApp.war
   instances: 1
   memory: 512M
   services:
