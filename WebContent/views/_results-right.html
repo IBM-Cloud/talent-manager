@@ -1,0 +1,75 @@
+    <div class="persona-title">People like {{selectedEmployee | capitalize}}</div>
+
+    <ul class="candidate-group">
+
+      <li class="candidate-item" ng-repeat="candidate in filteredCandidates | orderBy:'distToQueryPerson':true track by $index" ng-show="candidate.visible" ng-click="toggleExpanded(candidate)">
+
+       <!-- Potential Candidates -->
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-2" style = "padding: 0px; margin-bottom: -5px;">
+              <div class="photo-container" style = "display: inline-table; background-image: url('{{candidate.image_url}}'); background-size: 100%; height: 61px; width: 100px;">
+              </div>
+            </div>
+
+            <div class="name-container" style = "display: inline-table">
+              <div class="name">{{candidate.name | capitalize}}</div>
+              <div class = "job">
+                {{candidate.role | capitalize}} at {{candidate.resumeInfo.pastEmployers[0]}}
+              </div>
+            </div>
+
+            <div class="percentage-container" style = "display: inline-table">
+              <div class = "percentage" style="text-align: right;">{{candidate.distToQueryPerson | decimals: 0}}</div>
+              <img class = "plus" src = "../images/plus.png">
+            </div>
+          </div>
+
+          <div class="row" style ="margin-bottom: 10px;" ng-show="candidate.expanded">
+            <div class="row">
+              <div class="col-md-7 detailedTitle">Personality
+                <ul>
+                  <li ng-repeat="trait in candidate.traits | limitTo: 5 track by $index">
+                    {{trait.traitName}}: {{trait.percent}}%
+                    <div class="progress" style = "margin-bottom: 3px;">
+                      <div class="bar" style="width: {{trait.percent}}%; height: 100%; background-color: #0abeef;"></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-4 detailedTitle">Skills
+                <ul>
+                  <li ng-repeat="skill in candidate.resumeInfo.techSkills | limitTo: 5 track by $index">{{skill}}</li>
+                </ul>
+                <div style = "margin-top: 20px;">
+                  Past Employers
+                </div>
+                <ul>
+                  <li ng-repeat="employer in candidate.resumeInfo.pastEmployers | limitTo: 5 track by $index">{{employer}}</li>
+                </ul>
+                <div style = "margin-top: 20px;">
+                  <button class="btn btn-default btn-lg more-button" data-toggle="modal" data-target="#candidate-modal" style="border: 1px solid #0abeef; border-radius: 0px; padding: 5px 20px; color: #0abeef;" ng-click="getCandidateDetails(candidate);">
+                    More
+                  </button>
+                </div>
+                <div style = "margin-top: 20px;">
+                  <button class="btn btn-default btn-lg more-button" style="border: 1px solid #0abeef; border-radius: 0px; padding: 5px 20px; color: #0abeef;" ng-click="followUpCandidate(candidate);">
+                    Follow Up
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="detailedTitle col-md-8">Keywords from Application
+                <ul>
+                  <li ng-repeat="keyword in candidate.keyWords track by $index| limitTo: 5">{{keyword}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </li>
+    </ul>

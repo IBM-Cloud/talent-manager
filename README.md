@@ -1,5 +1,19 @@
 # Persona Fusion aka Talent Hotspot
 
+To Use
+================================================================================
+
+```
+cf create-service cloudantNoSQLDB Shared talant-manager-db
+cf push myappname
+```
+
+Replace myapp name with the name of your app (ex. talent-manager)
+
+or click the button below
+
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM-Bluemix/talent-manager.git)
+
 # About
 ## Meet Ivy
 * She's a talent manager at a growing tech startup. 
@@ -42,5 +56,4 @@ User Modeling API
 * [Install Java 1.7 JDK](https://ibm.biz/hackathon-java).
 * [Install the cf command-line tool](https://ibm.biz/hackathon-cf).
 * [Sign up for an IBM Bluemix account](http://bluemix.net).
-
 
