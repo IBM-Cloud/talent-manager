@@ -242,6 +242,7 @@ public class CloudantClient
 		dbInstance = new StdCouchDbInstance(this.httpClient);
 		CouchDbConnector dbc = new StdCouchDbConnector(this.name, dbInstance);
 		dbc.createDatabaseIfNotExists();
+		dbc.replicateFrom("https://jsloyer.cloudant.com/talent-manager");
 		return dbc;
 	}
 	
