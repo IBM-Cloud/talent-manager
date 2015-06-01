@@ -13,7 +13,7 @@ Replace myapp name with the name of your app (ex. talent-manager)
 
 or click the button below
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/jsloyer/talent-manager.git)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy)
 
 # About
 ## Meet Ivy

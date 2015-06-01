@@ -2,7 +2,7 @@
 declared-services:
   talent-manager-db:
     label: cloudantNoSQLDB
-    plan: shared
+    plan: Shared
   personality-insights-talent-manager:
     label: personality_insights
     plan: "IBM Watson Personality Insights Monthly Plan"
