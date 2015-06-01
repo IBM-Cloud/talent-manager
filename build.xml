@@ -24,6 +24,8 @@
     	<pathelement location="dep-jar/org.ektorp-1.2.2.jar"/>
     	<pathelement location="dep-jar/junit-4.11.jar"/>
     	<pathelement location="dep-jar/hamcrest-core-1.3.jar"/>
+    	
+    	<pathelement location="dep-jar/servlet-api.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
