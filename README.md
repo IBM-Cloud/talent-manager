@@ -1,11 +1,11 @@
-# Persona Fusion aka Talent Hotspot
+# Persona Fusion aka Talent Manager
 
 To Use
 ================================================================================
 
 ```
 cf create-service cloudantNoSQLDB Shared talant-manager-db
-cf create-service "IBM Watson Personality Insights Monthly Plan" 
+cf create-service personality_insights"IBM Watson Personality Insights Monthly Plan" personality-insights-talent-manager
 cf push myappname
 ```
 
