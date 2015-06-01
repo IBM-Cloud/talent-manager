@@ -244,6 +244,18 @@ public class CloudantClient
 		dbc.createDatabaseIfNotExists();
 		if (dbc.getAllDocIds().size() == 0) {
 			dbc.replicateFrom("https://jsloyer.cloudant.com/talent-manager");
+			while (true) {
+				if (dbc.getAllDocIds().size() == 117) {
+					break;
+				}
+				else {
+					try {
+						Thread.sleep(5000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 		}
 		return dbc;
 	}
