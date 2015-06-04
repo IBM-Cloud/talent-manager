@@ -15,6 +15,11 @@ or click the button below
 
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy)
 
+
+#Architecture Diagram
+![alt tag](https://raw.github.com/IBM-Bluemix/talent-manager/master/talent-manager-architecutre-diagram.png)
+
+
 # About
 ## Meet Ivy
 * She's a talent manager at a growing tech startup. 
