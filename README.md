@@ -1,4 +1,4 @@
-# Persona Fusion aka Talent Manager
+# Talent Manager
 
 To Use
 ================================================================================
@@ -47,6 +47,7 @@ From here, searches can be refined by including technical skills.
 User Modeling API
 * Rerieve personality traits
 * Visualize personality Traits
+
 ## Cloudant NoSQL Database
 * Store personality profiles
 
