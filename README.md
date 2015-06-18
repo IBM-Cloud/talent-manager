@@ -46,9 +46,9 @@ From here, searches can be refined by including technical skills.
 ## Watson APIs
 User Modeling API
 * Rerieve personality traits
-..* POST `systemu/api/v2/profile` 
 * Visualize personality Traits
-..* `systemu/api/v2/visualize`
+## Cloudant NoSQL Database
+* Store personality profiles
 
 ## Bluemix
 * [Liberty for Java Profile](https://ace.ng.bluemix.net/#/store/cloudOEPaneId=store&appTemplateGuid=javawebstarter)
@@ -57,9 +57,9 @@ User Modeling API
 * Angular.js
 * external file manager for reading text files
 
-## Pre-req's
-* [Install the Eclipse EE](https://ibm.biz/hackathon-eclipse).
-* [Install Java 1.7 JDK](https://ibm.biz/hackathon-java).
-* [Install the cf command-line tool](https://ibm.biz/hackathon-cf).
+## Pre-req's for local development
+* [Install the Eclipse EE](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/keplersr2).
+* [Install Java 1.7 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html).
+* [Install the cf command-line tool](https://github.com/cloudfoundry/cli/releases).
 * [Sign up for an IBM Bluemix account](http://bluemix.net).
 
