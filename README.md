@@ -61,6 +61,6 @@ User Modeling API
 # Pre-req's for local development
 * [Install the Eclipse EE](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/keplersr2).
 * [Install Java 1.7 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html).
-* [Install the cf command-line tool](https://github.com/cloudfoundry/cli/releases).
+* [Install the cf command-line tool](https://www.ng.bluemix.net/docs/#starters/install_cli.html).
 * [Sign up for an IBM Bluemix account](http://bluemix.net).
 
