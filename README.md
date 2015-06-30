@@ -6,7 +6,7 @@ Option 1: Click the button below
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy)
 ================================================================================
 
-Option 2: Download the source, compile the source using ant and push to Bluemix
+Option 2: Download the source, compile using ant and push the war to Bluemix
 ```
 git clone https://github.com/IBM-Bluemix/talent-manager.git
 cd talent-manager
