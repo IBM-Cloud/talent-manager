@@ -9,7 +9,7 @@ Option 1: Click the button below
 
 Option 2: Download the source, compile the source using ant and push to Bluemix
 ```
-git clone 
+git clone https://github.com/IBM-Bluemix/talent-manager.git
 cd talent-manager
 ant
 cf create-service cloudantNoSQLDB Shared talent-manager-db
