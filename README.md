@@ -2,12 +2,12 @@
 
 Three ways to deploy this application:
 
-Option 1) Click the button below
+Option 1: Click the button below
 
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy)
 ================================================================================
 
-Option 2) Download the source, compile the source using ant and push to Bluemix
+Option 2: Download the source, compile the source using ant and push to Bluemix
 ```
 git clone 
 cd talent-manager
@@ -19,7 +19,7 @@ cf push aUniqueAppName
 
 Replace aUniqueAppName with the name of your app (ex. talent-manager123)
 
-Option 3) Import and deploy to Bluemix using [Eclipse for Java EE](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/keplersr1) with the [Bluemix plugin](https://marketplace.eclipse.org/content/ibm-eclipse-tools-bluemix).
+Option 3: Import and deploy to Bluemix using [Eclipse for Java EE](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/keplersr1) with the [Bluemix plugin](https://marketplace.eclipse.org/content/ibm-eclipse-tools-bluemix).
 
 
 #Architecture Diagram
