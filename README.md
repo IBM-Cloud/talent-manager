@@ -1,19 +1,24 @@
 # Talent Manager
 
-To Use
+Three ways to deploy this application:
+
+Option 1: Click the button below
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy)
 ================================================================================
 
+Option 2: Download the source, compile using ant and push the war to Bluemix
 ```
+git clone https://github.com/IBM-Bluemix/talent-manager.git
+cd talent-manager
+ant
 cf create-service cloudantNoSQLDB Shared talent-manager-db
 cf create-service personality_insights "IBM Watson Personality Insights Monthly Plan" personality-insights-talent-manager
-cf push myappname
+cf push aUniqueAppName
 ```
 
-Replace myapp name with the name of your app (ex. talent-manager)
+Replace aUniqueAppName with the name of your app (ex. talent-manager123)
 
-or click the button below
-
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy)
+Option 3: Import and deploy to Bluemix using [Eclipse for Java EE](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/keplersr1) with the [Bluemix plugin](https://marketplace.eclipse.org/content/ibm-eclipse-tools-bluemix).
 
 
 #Architecture Diagram
