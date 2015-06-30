@@ -1,19 +1,24 @@
 # Talent Manager
 
-To Use
-================================================================================
-
-```
-cf create-service cloudantNoSQLDB Shared talent-manager-db
-cf create-service personality_insights "IBM Watson Personality Insights Monthly Plan" personality-insights-talent-manager
-cf push myappname
-```
-
-Replace myapp name with the name of your app (ex. talent-manager)
-
-or click the button below
+Three ways to deploy this application
+1) Click the button below
 
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy)
+================================================================================
+
+2) Download the source, compile the source using ant and push to Bluemix
+```
+git clone 
+cd talent-manager
+ant
+cf create-service cloudantNoSQLDB Shared talent-manager-db
+cf create-service personality_insights "IBM Watson Personality Insights Monthly Plan" personality-insights-talent-manager
+cf push aUniqueAppName
+```
+
+Replace aUniqueAppName with the name of your app (ex. talent-manager123)
+
+3) Import and deploy to Bluemix using [Eclipse for Java EE](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/keplersr1) with the [Bluemix plugin](https://marketplace.eclipse.org/content/ibm-eclipse-tools-bluemix).
 
 
 #Architecture Diagram
