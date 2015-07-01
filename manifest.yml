@@ -12,6 +12,7 @@ applications:
   name: talent-manager
   path: ./webStarterApp.war
   instances: 1
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
   memory: 512M
   services:
     - talent-manager-db
