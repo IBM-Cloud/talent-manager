@@ -12,6 +12,7 @@ git clone https://github.com/IBM-Bluemix/talent-manager.git
 cd talent-manager
 ant
 cd output
+cf login -a https://api.ng.bluemix.net
 cf create-service cloudantNoSQLDB Shared talent-manager-db
 cf create-service personality_insights standard personality-insights-talent-manager
 cf push aUniqueAppName
