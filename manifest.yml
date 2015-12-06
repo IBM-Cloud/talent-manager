@@ -5,14 +5,13 @@ declared-services:
     plan: Shared
   personality-insights-talent-manager:
     label: personality_insights
-    plan: standard
+    plan: tiered
 applications:
 - disk_quota: 1024M
   host: talent-manager
   name: talent-manager
   path: ./webStarterApp.war
   instances: 1
-  buildpack: https://github.com/cloudfoundry/java-buildpack.git
   memory: 512M
   services:
     - talent-manager-db
