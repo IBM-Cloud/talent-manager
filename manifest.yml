@@ -5,7 +5,7 @@ declared-services:
     plan: Shared
   personality-insights-talent-manager:
     label: personality_insights
-    plan: standard
+    plan: tiered
 applications:
 - disk_quota: 1024M
   host: talent-manager
