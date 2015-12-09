@@ -13,6 +13,7 @@ applications:
   path: ./webStarterApp.war
   instances: 1
   memory: 512M
+  buildpack: java_buildpack
   services:
     - talent-manager-db
     - personality-insights-talent-manager
