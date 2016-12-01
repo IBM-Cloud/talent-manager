@@ -2,7 +2,7 @@
 declared-services:
   talent-manager-db:
     label: cloudantNoSQLDB
-    plan: Shared
+    plan: Lite
   personality-insights-talent-manager:
     label: personality_insights
     plan: tiered
