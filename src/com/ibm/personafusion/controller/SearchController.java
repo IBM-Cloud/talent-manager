@@ -52,7 +52,7 @@ public class SearchController
 		System.out.println("Num results: " + results.size());
 		
 		String json = JsonUtils.getListPersonJson(results);
-		System.out.println(json);
+
 		return Response.ok(json).header("Access-Control-Allow-Origin", "*")
 	            .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
 	            .build();

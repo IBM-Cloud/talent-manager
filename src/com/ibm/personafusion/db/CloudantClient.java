@@ -38,6 +38,8 @@ public class CloudantClient
 	private JSONArray cloudant;
     private JSONObject cloudantInstance;
     private JSONObject cloudantCredentials;
+    
+    private List<Person> people;
 	
 	public CloudantClient()
 	{
@@ -85,24 +87,48 @@ public class CloudantClient
 	}
 	
 	/** Get a Person from Cloudant using name as the unique id. **/
+	@SuppressWarnings("unchecked")
 	public Person getPerson(String name)
 	{
 		name = name.toUpperCase();
-		@SuppressWarnings("unchecked")
-		HashMap<String, Object> obj = this.dbc.get(HashMap.class, name);
+
+		HashMap<String, Object> obj;
+		try {
+			obj = this.dbc.get(HashMap.class, name);
+		} catch (Exception e) {
+			System.out.print("Error getting data from db. Sleeping 1s and trying again.");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
+			obj = this.dbc.get(HashMap.class, name);
+		}
 		Person p = JsonUtils.getPersonFromJson((String)obj.get(Constants.JSON_KEY));
 		return p;
 	}
 	
 	/** Get all Person objects from Cloudant. **/
+	@SuppressWarnings("unchecked")
 	public List<Person> getAllPeople()
 	{
-		List<Person> people = new ArrayList<Person>();
+		if(people!=null) return people;
+		people = new ArrayList<Person>();
 		List<String> docIds = dbc.getAllDocIds();
 		for(String docId : docIds)
 		{
-			@SuppressWarnings("unchecked")
-			HashMap<String, Object> obj = this.dbc.get(HashMap.class, docId);
+			HashMap<String, Object> obj;
+			try {
+				obj = this.dbc.get(HashMap.class, docId);
+			} catch (Exception e1) {
+				System.out.print("Error getting data from db. Sleeping 1s and trying again.");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				obj = this.dbc.get(HashMap.class, docId);
+			}
 			if (obj.get(Constants.TYPE_KEY) != null && 
 				obj.get(Constants.TYPE_KEY).equals(Person.class.getName()))
 			{
@@ -119,20 +145,11 @@ public class CloudantClient
 	/** Get all Person objects in the specified group from Cloudant. **/
 	public List<Person> getAllPeopleInGroup(String groupName)
 	{
-		List<Person> people = new ArrayList<Person>();
-		List<String> docIds = dbc.getAllDocIds();
-		for(String docId : docIds)
+		List<Person> peopleinGroup = new ArrayList<Person>();
+		for(Person person : getAllPeople())
 		{
-			@SuppressWarnings("unchecked")
-			HashMap<String, Object> obj = this.dbc.get(HashMap.class, docId);
-			if (obj.get(Constants.TYPE_KEY) != null && 
-				obj.get(Constants.TYPE_KEY).equals(Person.class.getName()) &&
-				obj.get(Constants.GROUP_KEY) != null &&
-				obj.get(Constants.GROUP_KEY).equals(groupName))
-			{
-				String json = (String)obj.get(Constants.JSON_KEY);
-				Person p = JsonUtils.getPersonFromJson(json);
-				people.add(p);
+			if(person.group.equals(groupName)){
+				peopleinGroup.add(person);
 			}
 		}
 		System.out.println(String.format(
@@ -144,20 +161,11 @@ public class CloudantClient
 	/** Get all Person objects in the specified group from Cloudant. **/
 	public List<Person> getAllPeopleNotInGroup(String groupName)
 	{
-		List<Person> people = new ArrayList<Person>();
-		List<String> docIds = dbc.getAllDocIds();
-		for(String docId : docIds)
+		List<Person> peopleinGroup = new ArrayList<Person>();
+		for(Person person : getAllPeople())
 		{
-			@SuppressWarnings("unchecked")
-			HashMap<String, Object> obj = this.dbc.get(HashMap.class, docId);
-			if (obj.get(Constants.TYPE_KEY) != null && 
-				obj.get(Constants.TYPE_KEY).equals(Person.class.getName()) &&
-				obj.get(Constants.GROUP_KEY) != null &&
-				!obj.get(Constants.GROUP_KEY).equals(groupName))
-			{
-				String json = (String)obj.get(Constants.JSON_KEY);
-				Person p = JsonUtils.getPersonFromJson(json);
-				people.add(p);
+			if(!person.group.equals(groupName)){
+				peopleinGroup.add(person);
 			}
 		}
 		System.out.println(String.format(

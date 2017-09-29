@@ -23,7 +23,6 @@ public class PeopleController
 	public Response handle()
 	{
 		String json = JsonUtils.getListPersonJson(people);
-		System.out.println(json);
 		return Response.ok(json).header("Access-Control-Allow-Origin", "*")
 	            .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
 	            .build();
