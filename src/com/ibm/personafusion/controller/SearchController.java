@@ -23,12 +23,15 @@ import com.ibm.personafusion.model.Person;
 public class SearchController 
 {
 	/** Search for people who aren't current employees in the user's group. **/
-	public static List<Person> people = Config.cc.getAllPeopleNotInGroup(Constants.CURRENT_EMPLOYEES_GROUP);
+	public static List<Person> people = null;
 	
 	/** Returns search results as a JSON string. **/
 	@GET
 	public Response handleSearch(@Context UriInfo ui)
 	{
+		if(people == null) {
+			people = Config.cc.getAllPeopleNotInGroup(Constants.CURRENT_EMPLOYEES_GROUP);
+		}
 		System.out.println("Num people: " + people.size());
 		MultivaluedMap<String, String> queryParams = ui.getQueryParameters();
 		String fname = getParam("fname", queryParams);

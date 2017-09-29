@@ -4,8 +4,8 @@
     <property environment="env"/>
     <property name="srcDir" value="."/>
     <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="1.5"/>
-    <property name="source" value="1.5"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
     <property name="ARCHIVE_DIR" value="./output"/>
 	<property name="warname" value= "webStarterApp.war"/>
     <path id="classpathDir">
@@ -21,10 +21,12 @@
     	<pathelement location="dep-jar/fluent-hc-4.3.4.jar"/>
     	<pathelement location="dep-jar/twitter4j-core-4.0.2.jar"/>
     	<pathelement location="dep-jar/gson-2.3.jar"/>
-    	<pathelement location="dep-jar/org.ektorp-1.2.2.jar"/>
+    	<pathelement location="dep-jar/org.ektorp-1.5.0.jar"/>
     	<pathelement location="dep-jar/junit-4.11.jar"/>
     	<pathelement location="dep-jar/hamcrest-core-1.3.jar"/>
-    	
+    	<pathelement location="dep-jar/jackson-core-2.9.1"/>
+    	<pathelement location="dep-jar/jackson-databind-2.9.1"/>
+    	<pathelement location="dep-jar/jackson-annotations-2.9.1"/>
     	<pathelement location="dep-jar/servlet-api.jar"/>
     </path>
     <target name="init">
@@ -37,9 +39,6 @@
     <target name="build" depends="build-project,build-war"/>
     <target name="cleanall" depends="clean"/>
     <target name="build-project" depends="clean,init">
-    	<copy todir="${ARCHIVE_DIR}">
-	      <fileset file="manifest.yml" />
-	    </copy>
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}"
 		includeantruntime="false">
@@ -69,3 +68,5 @@
    </target>
 
 </project>
+
+

@@ -9,7 +9,7 @@ declared-services:
 applications:
 - disk_quota: 1024M
   name: talent-manager
-  path: ./webStarterApp.war
+  path: ./output/webStarterApp.war
   instances: 1
   memory: 512M
   buildpack: java_buildpack
